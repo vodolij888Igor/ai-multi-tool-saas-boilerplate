@@ -1,0 +1,99 @@
+{% extends "base.html" %}
+
+{% block title %}{{ _('Admin Dashboard') }}{% endblock %}
+
+{% block content %}
+<div class="container py-4">
+    <h1 class="mb-4"><i class="bi bi-gear"></i> {{ _('Admin Dashboard') }}</h1>
+    <p class="text-muted">{{ _('Manage users and credits.') }}</p>
+
+    <div class="card mb-4 border-secondary">
+        <div class="card-header bg-secondary text-white d-flex justify-content-between align-items-center">
+            <span><i class="bi bi-journal-text"></i> {{ _('Blog') }}</span>
+            <a href="{{ url_for('admin.admin_blog_list') }}" class="btn btn-light btn-sm">{{ _('Manage articles') }}</a>
+        </div>
+        <div class="card-body">
+            <p class="text-muted small mb-0">{{ _('Create and edit blog articles, categories, and publish/draft.') }}</p>
+            <a href="{{ url_for('blog.index') }}" class="btn btn-outline-secondary btn-sm mt-2" target="_blank">{{ _('View blog') }}</a>
+        </div>
+    </div>
+
+    <div class="card mb-4 border-primary">
+        <div class="card-header bg-primary text-white">
+            <i class="bi bi-eye"></i> {{ _('Preview product as') }}
+        </div>
+        <div class="card-body">
+            <p class="text-muted small mb-2">{{ _('Simulate how the app looks for each plan. Your account always has full access; this only changes sidebar and tool visibility for testing.') }}</p>
+            {% if tier_preview %}
+            <p class="mb-2"><span class="badge bg-info">{{ _('Currently previewing') }}: {{ tier_preview }}</span></p>
+            {% endif %}
+            <form action="{{ url_for('admin.admin_preview_tier') }}" method="post" class="d-inline-flex flex-wrap gap-2 align-items-center">
+                {% for p in preview_choices %}
+                <button type="submit" name="tier_preview" value="{{ p }}" class="btn btn-sm {% if tier_preview == p %}btn-primary{% else %}btn-outline-primary{% endif %}">{{ p }}</button>
+                {% endfor %}
+                <button type="submit" name="tier_preview" value="Off" class="btn btn-sm {% if not tier_preview %}btn-secondary{% else %}btn-outline-secondary{% endif %}">{{ _('Off') }}</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-striped table-hover align-middle">
+            <thead class="table-dark">
+                <tr>
+                    <th>{{ _('ID') }}</th>
+                    <th>{{ _('Email') }}</th>
+                    <th>{{ _('Credits') }}</th>
+                    <th>{{ _('Plan') }}</th>
+                    <th>{{ _('Subscription') }}</th>
+                    <th>{{ _('Join Date') }}</th>
+                    <th>{{ _('Edit credits') }}</th>
+                    <th>{{ _('Change plan') }}</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for u in users %}
+                <tr>
+                    <td>{{ u.id }}</td>
+                    <td>{{ u.email }}</td>
+                    <td>{{ u.credits }}</td>
+                    <td>
+                        {% if u.plan_name %}
+                        <span class="badge bg-info">{{ u.plan_name }}</span>
+                        {% else %}
+                        <span class="text-muted">—</span>
+                        {% endif %}
+                    </td>
+                    <td>
+                        {% if u.is_subscription_active %}
+                        <span class="badge bg-success">{{ _('Active') }}</span>
+                        {% else %}
+                        <span class="badge bg-secondary">{{ _('Inactive') }}</span>
+                        {% endif %}
+                    </td>
+                    <td>{{ u.created_at.strftime('%Y-%m-%d %H:%M') if u.created_at else '—' }}</td>
+                    <td>
+                        <form action="{{ url_for('admin.admin_user_credits', user_id=u.id) }}" method="post" class="d-inline-flex flex-wrap gap-1 align-items-center">
+                            <input type="number" name="amount" min="1" value="10" class="form-control form-control-sm" style="width: 70px;" required>
+                            <button type="submit" name="action" value="add" class="btn btn-sm btn-success">{{ _('Add') }}</button>
+                            <button type="submit" name="action" value="remove" class="btn btn-sm btn-outline-danger">{{ _('Remove') }}</button>
+                        </form>
+                    </td>
+                    <td>
+                        <form action="{{ url_for('admin.admin_user_plan', user_id=u.id) }}" method="post" class="d-inline-flex flex-wrap gap-1 align-items-center">
+                            <select name="plan" class="form-select form-select-sm" style="width: auto;">
+                                {% for p in plan_choices %}
+                                <option value="{{ p }}" {% if u.plan_name == p %}selected{% endif %}>{{ p }}</option>
+                                {% endfor %}
+                            </select>
+                            <button type="submit" class="btn btn-sm btn-primary">{{ _('Set') }}</button>
+                        </form>
+                    </td>
+                </tr>
+                {% else %}
+                <tr><td colspan="8" class="text-muted">{{ _('No users yet.') }}</td></tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

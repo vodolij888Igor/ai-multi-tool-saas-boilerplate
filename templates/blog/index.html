@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block title %}{{ seo.title }}{% endblock %}
+{% block meta_description %}{{ seo.description }}{% endblock %}
+{% block meta_keywords %}{{ seo.keywords }}{% endblock %}
+{% block og_title %}{{ seo.title }}{% endblock %}
+{% block og_description %}{{ seo.description }}{% endblock %}
+{% block twitter_title %}{{ seo.title }}{% endblock %}
+{% block twitter_description %}{{ seo.description }}{% endblock %}
+
+{% block content %}
+<div class="container py-4">
+    <h1 class="mb-4"><i class="bi bi-journal-text"></i> {{ _('Blog') }}</h1>
+    <p class="text-muted mb-4">{{ _('Tips, guides, and updates about AI content creation.') }}</p>
+
+    {% if articles %}
+    <div class="row g-4">
+        {% for a in articles %}
+        <div class="col-md-6 col-lg-4">
+            <article class="card h-100 shadow-sm">
+                <div class="card-body">
+                    {% if a.category %}
+                    <span class="badge bg-secondary mb-2">{{ a.category.name }}</span>
+                    {% endif %}
+                    <h2 class="h5 card-title">
+                        <a href="{{ url_for('blog.article', slug=a.slug) }}" class="text-decoration-none text-dark">{{ a.title }}</a>
+                    </h2>
+                    <p class="card-text text-muted small">{{ a.excerpt or (a.content[:160] + '…' if a.content and a.content|length > 160 else (a.content or '')) }}</p>
+                    <p class="mb-0 small text-muted">
+                        {{ a.published_at.strftime('%Y-%m-%d') if a.published_at else '' }}
+                        <a href="{{ url_for('blog.article', slug=a.slug) }}" class="ms-2">{{ _('Read more') }} <i class="bi bi-arrow-right"></i></a>
+                    </p>
+                </div>
+            </article>
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <div class="alert alert-info">
+        <i class="bi bi-info-circle"></i> {{ _('No articles yet.') }}
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

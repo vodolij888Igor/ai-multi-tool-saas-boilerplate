@@ -1,0 +1,802 @@
+# Ukrainian translations for PROJECT.
+# Copyright (C) 2026 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2026-03-08 17:54-0700\n"
+"PO-Revision-Date: 2026-03-08 17:55-0700\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: uk\n"
+"Language-Team: uk <LL@li.org>\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.13.1\n"
+
+#: templates/tool.html
+msgid "Generate"
+msgstr "Згенерувати"
+
+#: templates/tool.html
+msgid "Describe your task..."
+msgstr "Опишіть ваше завдання..."
+
+#: templates/tool.html
+msgid "Result:"
+msgstr "Результат:"
+
+#: templates/tool.html
+msgid "About This Tool"
+msgstr "Про цей інструмент"
+
+#: templates/tool.html
+msgid "Back to Dashboard"
+msgstr "Назад до панелі"
+
+#: templates/tool.html
+msgid "Generating..."
+msgstr "Генерую..."
+
+#: templates/tool.html
+msgid "Error:"
+msgstr "Помилка:"
+
+#: templates/base.html templates/index.html
+msgid "All rights reserved"
+msgstr "Всі права захищені"
+
+#: templates/index.html
+msgid "Log out"
+msgstr "Вийти"
+
+#: templates/index.html
+msgid "Professional AI Tools"
+msgstr "Професійні AI інструменти"
+
+#: templates/index.html
+msgid "Personal & Creative Tools"
+msgstr "Особисті та творчі інструменти"
+
+#: templates/base.html
+msgid "Credits"
+msgstr "Кредити"
+
+#: templates/index.html
+msgid "AI Dashboard - All Tools"
+msgstr "AI Панель - Всі інструменти"
+
+#: templates/pricing.html templates/base.html
+msgid "Pricing"
+msgstr "Ціни"
+
+#: templates/pricing.html
+msgid "Pricing Plans"
+msgstr "Тарифні плани"
+
+#: templates/pricing.html
+msgid "Choose the plan that fits your needs. Start free, scale when you are ready."
+msgstr "Оберіть план під себе. Почніть безкоштовно, масштабуйте, коли будете готові."
+
+#: templates/pricing.html
+msgid "Starter"
+msgstr "Старт"
+
+#: templates/pricing.html
+msgid "Pro"
+msgstr "Про"
+
+#: templates/pricing.html
+msgid "Business"
+msgstr "Бізнес"
+
+#: templates/pricing.html
+msgid "month"
+msgstr "міс."
+
+#: templates/pricing.html
+msgid "10 Free Credits"
+msgstr "10 безкоштовних кредитів"
+
+#: templates/pricing.html
+msgid "Basic AI Access"
+msgstr "Базовий доступ до AI"
+
+#: templates/pricing.html
+msgid "500 Credits"
+msgstr "500 кредитів"
+
+#: templates/pricing.html
+msgid "2000 Credits"
+msgstr "2000 кредитів"
+
+#: templates/pricing.html
+msgid "Professional Tools"
+msgstr "Професійні інструменти"
+
+#: templates/pricing.html
+msgid "Unlimited Access"
+msgstr "Безлімітний доступ"
+
+#: templates/pricing.html
+msgid "Buy Now"
+msgstr "Купити зараз"
+
+#: templates/pricing.html
+msgid "Get started"
+msgstr "Почати"
+
+#: templates/pricing.html
+msgid "Popular"
+msgstr "Популярний"
+
+#: templates/pricing.html
+msgid "Paid plans: coming soon. For now, sign up and get 10 free credits."
+msgstr "Платні плани: незабаром. Поки що зареєструйтесь і отримайте 10 безкоштовних кредитів."
+
+#: templates/pricing.html
+msgid "All plans include access to the dashboard and AI tools. Secure payment via Stripe."
+msgstr "Усі плани включають доступ до панелі та AI інструментів. Безпечна оплата через Stripe."
+
+#: templates/index.html
+msgid "Subscription inactive. Your credits are currently locked."
+msgstr "Підписка неактивна. Ваші кредити зараз заблоковані."
+
+#: templates/index.html
+msgid "View plans"
+msgstr "Переглянути плани"
+
+#: templates/admin/dashboard.html
+msgid "Admin Dashboard"
+msgstr "Панель адміністратора"
+
+#: templates/admin/dashboard.html
+msgid "ID"
+msgstr "ID"
+
+#: templates/admin/dashboard.html
+msgid "Manage users and credits."
+msgstr "Керування користувачами та кредитами."
+
+#: templates/admin/dashboard.html templates/settings.html
+msgid "Email"
+msgstr "Ел. пошта"
+
+#: templates/admin/dashboard.html
+msgid "Subscription"
+msgstr "Підписка"
+
+#: templates/admin/dashboard.html
+msgid "Join Date"
+msgstr "Дата реєстрації"
+
+#: templates/admin/dashboard.html
+msgid "Edit credits"
+msgstr "Редагувати кредити"
+
+#: templates/admin/dashboard.html
+msgid "Active"
+msgstr "Активна"
+
+#: templates/admin/dashboard.html
+msgid "Inactive"
+msgstr "Неактивна"
+
+#: templates/admin/dashboard.html
+msgid "Add"
+msgstr "Додати"
+
+#: templates/admin/dashboard.html
+msgid "Remove"
+msgstr "Зняти"
+
+#: templates/admin/dashboard.html
+msgid "No users yet."
+msgstr "Користувачів поки немає."
+
+#: templates/settings.html
+msgid "User Settings"
+msgstr "Налаштування користувача"
+
+#: templates/settings.html
+msgid "Dashboard"
+msgstr "Панель керування"
+
+#: templates/settings.html
+msgid "Account"
+msgstr "Обліковий запис"
+
+#: templates/settings.html
+msgid "Current plan"
+msgstr "Поточний план"
+
+#: templates/settings.html
+msgid "Manage your subscription and payment method in Stripe."
+msgstr "Керуйте підпискою та способом оплати в Stripe."
+
+#: templates/settings.html
+msgid "Manage Subscription"
+msgstr "Керувати підпискою"
+
+#: templates/settings.html
+msgid "Subscribe first to manage billing in the portal."
+msgstr "Спочатку підпишіться, щоб керувати оплатою в порталі."
+
+#: templates/settings.html
+msgid "Update Password"
+msgstr "Оновити пароль"
+
+#: templates/settings.html
+msgid "Current password"
+msgstr "Поточний пароль"
+
+#: templates/settings.html
+msgid "New password"
+msgstr "Новий пароль"
+
+#: templates/settings.html
+msgid "Confirm new password"
+msgstr "Підтвердіть новий пароль"
+
+#: templates/base.html
+msgid "Admin"
+msgstr "Адмін"
+
+#: templates/base.html (sidebar)
+msgid "Tools"
+msgstr "Інструменти"
+
+#: templates/base.html (sidebar)
+msgid "Professional Tools"
+msgstr "Професійні інструменти"
+
+#: templates/base.html (sidebar)
+msgid "Creative Tools"
+msgstr "Творчі інструменти"
+
+#: templates/base.html (sidebar)
+msgid "Admin Panel"
+msgstr "Панель адміністратора"
+
+#: templates/base.html (sidebar lock)
+msgid "Upgrade to Pro"
+msgstr "Перейти на Pro"
+
+#: templates/base.html (sidebar)
+msgid "Menu"
+msgstr "Меню"
+
+#: templates/index.html (dashboard)
+msgid "Welcome back"
+msgstr "З поверненням"
+
+#: templates/index.html (dashboard)
+msgid "Search tools"
+msgstr "Пошук інструментів"
+
+#: templates/index.html (dashboard)
+msgid "Search tools by name..."
+msgstr "Пошук інструментів за назвою..."
+
+#: templates/index.html (dashboard)
+msgid "Recently Used"
+msgstr "Нещодавно використовувані"
+
+#: templates/index.html (dashboard)
+msgid "Featured Tools"
+msgstr "Обрані інструменти"
+
+#: templates/index.html (dashboard)
+msgid "Upgrade to Ultimate"
+msgstr "Перейти на Ultimate"
+
+#: templates/index.html (dashboard)
+msgid "Open Tool"
+msgstr "Відкрити інструмент"
+
+#: templates/index.html (dashboard)
+msgid "All tools"
+msgstr "Усі інструменти"
+
+#: templates/index.html (dashboard)
+msgid "Use the sidebar"
+msgstr "Скористайтесь боковим меню"
+
+#: templates/index.html (dashboard)
+msgid "to browse Professional Suite and Creative Studio."
+msgstr "щоб переглянути Професійний пакет та Творчу студію."
+
+#: templates/index.html (dashboard)
+msgid "Create professional content in seconds with artificial intelligence."
+msgstr "Створюйте професійний контент за секунди за допомогою штучного інтелекту."
+
+#: templates/index.html (dashboard)
+msgid "Access to Tools"
+msgstr "Доступ до інструментів"
+
+#: templates/index.html (dashboard)
+msgid "To use AI tools, you need to log in or register."
+msgstr "Для використання AI інструментів увійдіть або зареєструйтесь."
+
+#: templates/index.html (dashboard)
+msgid "Log in"
+msgstr "Увійти"
+
+#: templates/index.html (dashboard)
+msgid "Register"
+msgstr "Зареєструватися"
+
+#: templates/auth/login.html
+msgid "Log in — AI Multi Tool"
+msgstr "Увійти — AI Multi Tool"
+
+#: templates/auth/login.html
+msgid "Sign in to use AI tools and manage your credits."
+msgstr "Увійдіть, щоб користуватися AI інструментами та керувати кредитами."
+
+#: templates/auth/login.html templates/auth/register.html
+msgid "Password"
+msgstr "Пароль"
+
+#: templates/auth/login.html
+msgid "Remember me"
+msgstr "Запам'ятати мене"
+
+#: templates/auth/login.html
+msgid "Don't have an account?"
+msgstr "Немає облікового запису?"
+
+#: templates/auth/login.html templates/auth/register.html
+msgid "Sign up"
+msgstr "Реєстрація"
+
+#: templates/auth/register.html
+msgid "Sign up — AI Multi Tool"
+msgstr "Реєстрація — AI Multi Tool"
+
+#: templates/auth/register.html
+msgid "Create account"
+msgstr "Створити обліковий запис"
+
+#: templates/auth/register.html
+msgid "Register to get 10 free credits to try our AI tools."
+msgstr "Зареєструйтесь і отримайте 10 безкоштовних кредитів для спроби AI інструментів."
+
+#: templates/auth/register.html
+msgid "Confirm password"
+msgstr "Підтвердіть пароль"
+
+#: templates/auth/register.html
+msgid "At least 6 characters"
+msgstr "Мінімум 6 символів"
+
+#: templates/auth/register.html
+msgid "Already have an account?"
+msgstr "Вже є обліковий запис?"
+
+#: templates/auth/login.html templates/auth/register.html
+msgid "Email placeholder"
+msgstr "you@example.com"
+
+#: templates/auth/login.html templates/auth/register.html
+msgid "Password placeholder"
+msgstr "••••••••"
+
+#: templates/base.html (sidebar)
+msgid "Settings"
+msgstr "Налаштування"
+
+#: templates/base.html (language switcher)
+msgid "Language"
+msgstr "Мова"
+
+#: templates/base.html (header brand)
+msgid "AI"
+msgstr "AI"
+
+#: templates/base.html (header brand)
+msgid "Multi Tools"
+msgstr "Мультиінструменти"
+
+#: templates/base.html (language names)
+msgid "English"
+msgstr "Англійська"
+
+#: templates/base.html (language names)
+msgid "Ukrainian"
+msgstr "Українська"
+
+#: templates/base.html (language names)
+msgid "Spanish"
+msgstr "Іспанська"
+
+#: templates/base.html (language names)
+msgid "German"
+msgstr "Німецька"
+
+#: templates/base.html (language names)
+msgid "French"
+msgstr "Французька"
+
+#: templates/base.html (language names)
+msgid "Russian"
+msgstr "Російська"
+
+#: templates/index.html (search)
+msgid "No tools found"
+msgstr "Інструменти не знайдено"
+
+#: templates/403.html
+msgid "Forbidden"
+msgstr "Заборонено"
+
+#: templates/403.html
+msgid "You do not have permission to access this page."
+msgstr "У вас немає дозволу на доступ до цієї сторінки."
+
+#: templates/base.html (offcanvas close)
+msgid "Close"
+msgstr "Закрити"
+
+#: templates/base.html (sidebar)
+msgid "Professional Suite"
+msgstr "Професійний пакет"
+
+#: templates/base.html (sidebar)
+msgid "Creative Studio"
+msgstr "Творча студія"
+
+#: templates/base.html (sidebar)
+msgid "Account & Billing"
+msgstr "Обліковий запис та оплата"
+
+#: templates/index.html (landing)
+msgid "Get started free"
+msgstr "Почати безкоштовно"
+
+#: templates/index.html (landing)
+msgid "See full pricing"
+msgstr "Переглянути тарифи"
+
+#: templates/index.html (landing)
+msgid "Ready to create?"
+msgstr "Готові творити?"
+
+#: templates/index.html (landing)
+msgid "Sign up in seconds. No credit card required for the free plan."
+msgstr "Реєстрація за секунди. Без банківської картки для безкоштовного плану."
+
+#: templates/index.html (landing)
+msgid "Simple pricing"
+msgstr "Прості тарифи"
+
+#: templates/base.html templates/index.html
+msgid "Blog"
+msgstr "Блог"
+
+#: templates/index.html (landing)
+msgid "Fast & simple"
+msgstr "Швидко та просто"
+
+#: templates/index.html (landing)
+msgid "Why AI Multi Tools"
+msgstr "Чому AI Multi Tools"
+
+#: templates/index.html (landing)
+msgid "Amazon, Shopify, Etsy, resumes, KDP, YouTube scripts, TikTok hooks, and Google Ads copy."
+msgstr "Amazon, Shopify, Etsy, резюме, KDP, сценарії YouTube, хуки TikTok та реклама Google Ads."
+
+#: templates/index.html (landing)
+msgid "Finance, business, marketing, tech, health, education, travel, food, fitness, beauty, real estate, psychology."
+msgstr "Фінанси, бізнес, маркетинг, технології, здоров'я, освіта, подорожі, їжа, фітнес, краси, нерухомість, психологія."
+
+#: templates/index.html (landing)
+msgid "Describe your task, get optimized content. Credits-based usage with flexible plans."
+msgstr "Опишіть завдання — отримайте оптимізований контент. Кредити та гнучкі плани."
+
+#: templates/index.html (landing)
+msgid "AI Multi Tools"
+msgstr "AI Мультиінструменти"
+
+#: templates/base.html
+msgid "Open menu"
+msgstr "Відкрити меню"
+
+#: templates/base.html
+msgid "Toggle navigation"
+msgstr "Перемкнути навігацію"
+
+#: templates/base.html
+msgid "Notifications"
+msgstr "Сповіщення"
+
+#: templates/base.html
+msgid "Main"
+msgstr "Головне"
+
+#: templates/index.html (meta)
+msgid "AI Multi Tools - Create professional content in seconds with artificial intelligence"
+msgstr "AI Multi Tools — створюйте професійний контент за секунди за допомогою ШІ"
+
+#: templates/index.html (meta)
+msgid "Create professional content in seconds with AI. Amazon, Shopify, Etsy, resumes, KDP, YouTube, TikTok, and 20+ tools. Free tier available."
+msgstr "Створюйте професійний контент за секунди з AI. Amazon, Shopify, Etsy, резюме, KDP, YouTube, TikTok та 20+ інструментів. Є безкоштовний план."
+
+#: templates/index.html (meta)
+msgid "AI multi tools, artificial intelligence, content creation, SEO content, Amazon, Shopify, Etsy"
+msgstr "AI мультиінструменти, штучний інтелект, створення контенту, SEO, Amazon, Shopify, Etsy"
+
+#: templates/index.html (meta)
+msgid "AI Multi Tools - Create Professional Content in Seconds"
+msgstr "AI Multi Tools — створюйте професійний контент за секунди"
+
+#: templates/index.html (meta)
+msgid "Create professional content in seconds with AI. Free tier, Pro and Business plans. Start free."
+msgstr "Створюйте контент за секунди з AI. Безкоштовний, Pro та Бізнес плани. Почніть безкоштовно."
+
+#: templates/index.html (meta)
+msgid "Create professional content in seconds with AI."
+msgstr "Створюйте професійний контент за секунди з AI."
+
+#: templates/base.html (meta)
+msgid "AI Multi Tools - Create professional content in seconds"
+msgstr "AI Multi Tools — створюйте професійний контент за секунди"
+
+#: templates/blog/index.html
+msgid "Tips, guides, and updates about AI content creation."
+msgstr "Поради, гайди та новини про створення контенту за допомогою AI."
+
+#: templates/blog/index.html
+msgid "Read more"
+msgstr "Читати далі"
+
+#: templates/blog/index.html
+msgid "No articles yet."
+msgstr "Статей поки немає."
+
+#: templates/blog/article.html
+msgid "Back to Blog"
+msgstr "Назад до блогу"
+
+#: templates/blog/article.html
+msgid "By"
+msgstr "Автор"
+
+#: templates/blog/article.html
+msgid "Create content with AI"
+msgstr "Створюйте контент за допомогою AI"
+
+#: templates/blog/article.html
+msgid "Use our AI tools to generate professional content in seconds."
+msgstr "Використовуйте наші AI інструменти для створення професійного контенту за секунди."
+
+#: templates/blog/article.html
+msgid "Try AI Tools"
+msgstr "Спробувати AI інструменти"
+
+#: templates/blog/article.html
+msgid "Related articles"
+msgstr "Схожі статті"
+
+#: templates/index.html
+msgid "why"
+msgstr "Чому"
+
+#: templates/index.html
+msgid "Choose a plan and scale when you need more."
+msgstr "Оберіть тариф і масштабуйтеся, коли знадобиться більше."
+
+#: templates/index.html
+msgid "Free"
+msgstr "Безкоштовно"
+
+#: templates/index.html
+msgid "5 credits per day"
+msgstr "5 кредитів на день"
+
+#: templates/index.html
+msgid "Basic tools"
+msgstr "Базові інструменти"
+
+#: templates/index.html
+msgid "Limited features"
+msgstr "Обмежені можливості"
+
+#: templates/index.html
+msgid "Most popular"
+msgstr "Найпопулярніший"
+
+#: templates/index.html
+msgid "100 credits per month"
+msgstr "100 кредитів на місяць"
+
+#: templates/index.html
+msgid "All tools"
+msgstr "Усі інструменти"
+
+#: templates/index.html
+msgid "Priority processing"
+msgstr "Пріоритетна обробка"
+
+#: templates/index.html
+msgid "Unlimited credits"
+msgstr "Необмежені кредити"
+
+#: templates/index.html
+msgid "API access"
+msgstr "Доступ до API"
+
+#: templates/index.html
+msgid "Advanced analytics"
+msgstr "Розширена аналітика"
+
+#: templates/index.html
+msgid "how_it_works"
+msgstr "Як це працює"
+
+#: templates/index.html
+msgid "how_it_works_subtitle"
+msgstr "Три кроки — від ідеї до готового тексту."
+
+#: templates/index.html
+msgid "how_step_1_label"
+msgstr "Крок 1"
+
+#: templates/index.html
+msgid "how_step_1_title"
+msgstr "Опишіть завдання"
+
+#: templates/index.html
+msgid "how_step_1_desc"
+msgstr "Стаття, картка товару, реклама — один запит."
+
+#: templates/index.html
+msgid "how_step_2_label"
+msgstr "Крок 2"
+
+#: templates/index.html
+msgid "how_step_2_title"
+msgstr "ШІ створює контент"
+
+#: templates/index.html
+msgid "how_step_2_desc"
+msgstr "Готовий текст за секунди під вашу мету."
+
+#: templates/index.html
+msgid "how_step_3_label"
+msgstr "Крок 3"
+
+#: templates/index.html
+msgid "how_step_3_title"
+msgstr "Скопіюйте й використайте"
+
+#: templates/index.html
+msgid "how_step_3_desc"
+msgstr "З історії чи буфера — одразу в роботу."
+
+#: templates/index.html
+msgid "how_demo_input"
+msgstr "Напиши слоган для застосунку продуктивності."
+
+#: templates/index.html
+msgid "how_demo_output"
+msgstr ""
+"Фокус без зайвого.\n"
+"Роби найкращу роботу щодня."
+
+#: templates/index.html
+msgid "try_mindixo_ai"
+msgstr "Спробувати Mindixo AI"
+
+#: templates/index.html
+msgid "examples_title"
+msgstr "Приклади результатів"
+
+#: templates/index.html
+msgid "examples_subtitle"
+msgstr "Ось як виглядає результат роботи AI на реальних запитах"
+
+#: templates/index.html
+msgid "examples_tab_blog"
+msgstr "Статті"
+
+#: templates/index.html
+msgid "examples_tab_product"
+msgstr "Товари"
+
+#: templates/index.html
+msgid "examples_tab_ads"
+msgstr "Реклама"
+
+#: templates/index.html
+msgid "examples_label_input"
+msgstr "Запит"
+
+#: templates/index.html
+msgid "examples_label_output"
+msgstr "Результат AI"
+
+#: templates/index.html
+msgid "examples_generated_in_seconds"
+msgstr "Згенеровано за секунди"
+
+#: templates/index.html
+msgid "examples_ai_generating"
+msgstr "AI генерує…"
+
+#: templates/index.html
+msgid "examples_demo_generate"
+msgstr "Згенерувати"
+
+#: templates/index.html
+msgid "examples_demo_loading"
+msgstr "Генеруємо…"
+
+#: templates/index.html
+msgid "examples_blog_input"
+msgstr "Напиши вступ до статті про користь ранкового спорту"
+
+#: templates/index.html
+msgid "examples_blog_output"
+msgstr ""
+"Ранковий рух не обов’язково має бути інтенсивним, щоб працював.\n"
+"Стабільний ритм тренує концентрацію, поки день ще не «зашумів».\n"
+"Почніть із води, потім 10 хвилин мобільності або швидкої ходьби.\n"
+"Ведіть нотатки 2 тижні — спершу зазвичай змінюються енергія й сон.\n"
+"Саме так малі звички перетворюються на стійкі результати."
+
+#: templates/index.html
+msgid "examples_product_input"
+msgstr "Опиши бездротові навушники для інтернет-магазину"
+
+#: templates/index.html
+msgid "examples_product_output"
+msgstr ""
+"Сучасні бездротові навушники забезпечують чистий звук, комфорт та довгу автономну роботу — ідеально для роботи з дому, подорожей і спортзалу.\n"
+"Стабільне Bluetooth-з’єднання, зручна посадка й зрозумілі кнопки керування — щоб ти зосередився на музиці, а не на кабелях.\n"
+"Додай у кошик і відчуй різницю вже з першого дня використання."
+
+#: templates/index.html
+msgid "examples_ads_input"
+msgstr "Створи рекламний текст для фітнес-програми"
+
+#: templates/index.html
+msgid "examples_ads_output"
+msgstr ""
+"Хочеш тіло мрії без виснажливих тренувань? Почни вже сьогодні з нашою фітнес-програмою.\n"
+"Короткі тренування, розумна прогресія та підтримка як у тренера — без вигорання й зайвого стресу.\n"
+"Перший тиждень безкоштовно. Приєднуйся до тих, хто вже змінив свій ритм життя."
+
+#: templates/index.html
+msgid "examples_actions_toolbar"
+msgstr "Дії з результатом"
+
+#: templates/index.html
+msgid "examples_action_copy"
+msgstr "Копіювати"
+
+#: templates/index.html
+msgid "examples_action_edit"
+msgstr "Редагувати"
+
+#: templates/index.html
+msgid "examples_action_done"
+msgstr "Готово"
+
+#: templates/index.html
+msgid "examples_action_use"
+msgstr "Використати результат"
+
+#: templates/index.html
+msgid "examples_action_copied"
+msgstr "Скопійовано"
+
+#: templates/index.html
+msgid "examples_cta_primary"
+msgstr "Створити перший результат"
+

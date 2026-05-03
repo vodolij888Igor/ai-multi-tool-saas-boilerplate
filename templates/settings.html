@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+
+{% block title %}{{ _('User Settings') }}{% endblock %}
+
+{% block content %}
+<div class="container py-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1 class="mb-0"><i class="bi bi-person-gear"></i> {{ _('User Settings') }}</h1>
+        <a href="{{ url_for('ai.dashboard') }}" class="btn btn-outline-primary">{{ _('Dashboard') }}</a>
+    </div>
+
+    <div class="card shadow-sm mb-4">
+        <div class="card-header bg-primary text-white">
+            <h5 class="mb-0">{{ _('Account') }}</h5>
+        </div>
+        <div class="card-body">
+            <dl class="row mb-0">
+                <dt class="col-sm-3">{{ _('Email') }}</dt>
+                <dd class="col-sm-9">{{ user.email }}</dd>
+                <dt class="col-sm-3">{{ _('Current plan') }}</dt>
+                <dd class="col-sm-9">{{ plan_name }}</dd>
+                <dt class="col-sm-3">{{ _('Credits') }}</dt>
+                <dd class="col-sm-9">{{ user.credits }}</dd>
+            </dl>
+            <hr>
+            <p class="mb-2">{{ _('Manage your subscription and payment method in Stripe.') }}</p>
+            {% if user.stripe_customer_id %}
+            <form action="{{ url_for('billing.create_portal_session') }}" method="post" class="d-inline">
+                <button type="submit" class="btn btn-primary">{{ _('Manage Subscription') }}</button>
+            </form>
+            {% else %}
+            <a href="{{ url_for('billing.pricing') }}" class="btn btn-outline-primary">{{ _('View plans') }}</a>
+            <span class="text-muted small ms-2">{{ _('Subscribe first to manage billing in the portal.') }}</span>
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="card shadow-sm">
+        <div class="card-header bg-secondary text-white">
+            <h5 class="mb-0">{{ _('Update Password') }}</h5>
+        </div>
+        <div class="card-body">
+            <form method="post" action="{{ url_for('users.settings') }}">
+                <input type="hidden" name="action" value="update_password">
+                <div class="mb-3">
+                    <label for="current_password" class="form-label">{{ _('Current password') }}</label>
+                    <input type="password" class="form-control" id="current_password" name="current_password" required autocomplete="current-password">
+                </div>
+                <div class="mb-3">
+                    <label for="new_password" class="form-label">{{ _('New password') }}</label>
+                    <input type="password" class="form-control" id="new_password" name="new_password" minlength="6" required autocomplete="new-password">
+                </div>
+                <div class="mb-3">
+                    <label for="confirm_password" class="form-label">{{ _('Confirm new password') }}</label>
+                    <input type="password" class="form-control" id="confirm_password" name="confirm_password" minlength="6" required autocomplete="new-password">
+                </div>
+                <button type="submit" class="btn btn-primary">{{ _('Update Password') }}</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

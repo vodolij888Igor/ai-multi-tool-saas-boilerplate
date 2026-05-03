@@ -1,0 +1,801 @@
+# English translations for PROJECT.
+# Copyright (C) 2026 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2026-03-08 17:54-0700\n"
+"PO-Revision-Date: 2026-03-08 17:55-0700\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: en\n"
+"Language-Team: en <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.13.1\n"
+
+#: templates/tool.html
+msgid "Generate"
+msgstr "Generate"
+
+#: templates/tool.html
+msgid "Describe your task..."
+msgstr "Describe your task..."
+
+#: templates/tool.html
+msgid "Result:"
+msgstr "Result:"
+
+#: templates/tool.html
+msgid "About This Tool"
+msgstr "About This Tool"
+
+#: templates/tool.html
+msgid "Back to Dashboard"
+msgstr "Back to Dashboard"
+
+#: templates/tool.html
+msgid "Generating..."
+msgstr "Generating..."
+
+#: templates/tool.html
+msgid "Error:"
+msgstr "Error:"
+
+#: templates/base.html templates/index.html
+msgid "All rights reserved"
+msgstr "All rights reserved"
+
+#: templates/index.html
+msgid "Log out"
+msgstr "Log out"
+
+#: templates/index.html
+msgid "Professional AI Tools"
+msgstr "Professional AI Tools"
+
+#: templates/index.html
+msgid "Personal & Creative Tools"
+msgstr "Personal & Creative Tools"
+
+#: templates/base.html
+msgid "Credits"
+msgstr "Credits"
+
+#: templates/index.html
+msgid "AI Dashboard - All Tools"
+msgstr "AI Dashboard - All Tools"
+
+#: templates/pricing.html templates/base.html
+msgid "Pricing"
+msgstr "Pricing"
+
+#: templates/pricing.html
+msgid "Pricing Plans"
+msgstr "Pricing Plans"
+
+#: templates/pricing.html
+msgid "Choose the plan that fits your needs. Start free, scale when you are ready."
+msgstr "Choose the plan that fits your needs. Start free, scale when you are ready."
+
+#: templates/pricing.html
+msgid "Starter"
+msgstr "Starter"
+
+#: templates/pricing.html
+msgid "Pro"
+msgstr "Pro"
+
+#: templates/pricing.html
+msgid "Business"
+msgstr "Business"
+
+#: templates/pricing.html
+msgid "month"
+msgstr "month"
+
+#: templates/pricing.html
+msgid "10 Free Credits"
+msgstr "10 Free Credits"
+
+#: templates/pricing.html
+msgid "Basic AI Access"
+msgstr "Basic AI Access"
+
+#: templates/pricing.html
+msgid "500 Credits"
+msgstr "500 Credits"
+
+#: templates/pricing.html
+msgid "2000 Credits"
+msgstr "2000 Credits"
+
+#: templates/pricing.html
+msgid "Professional Tools"
+msgstr "Professional Tools"
+
+#: templates/pricing.html
+msgid "Unlimited Access"
+msgstr "Unlimited Access"
+
+#: templates/pricing.html
+msgid "Buy Now"
+msgstr "Buy Now"
+
+#: templates/pricing.html
+msgid "Get started"
+msgstr "Get started"
+
+#: templates/pricing.html
+msgid "Popular"
+msgstr "Popular"
+
+#: templates/pricing.html
+msgid "Paid plans: coming soon. For now, sign up and get 10 free credits."
+msgstr "Paid plans: coming soon. For now, sign up and get 10 free credits."
+
+#: templates/pricing.html
+msgid "All plans include access to the dashboard and AI tools. Secure payment via Stripe."
+msgstr "All plans include access to the dashboard and AI tools. Secure payment via Stripe."
+
+#: templates/index.html
+msgid "Subscription inactive. Your credits are currently locked."
+msgstr "Subscription inactive. Your credits are currently locked."
+
+#: templates/index.html
+msgid "View plans"
+msgstr "View plans"
+
+#: templates/admin/dashboard.html
+msgid "Admin Dashboard"
+msgstr "Admin Dashboard"
+
+#: templates/admin/dashboard.html
+msgid "ID"
+msgstr "ID"
+
+#: templates/admin/dashboard.html
+msgid "Manage users and credits."
+msgstr "Manage users and credits."
+
+#: templates/admin/dashboard.html templates/settings.html
+msgid "Email"
+msgstr "Email"
+
+#: templates/admin/dashboard.html
+msgid "Subscription"
+msgstr "Subscription"
+
+#: templates/admin/dashboard.html
+msgid "Join Date"
+msgstr "Join Date"
+
+#: templates/admin/dashboard.html
+msgid "Edit credits"
+msgstr "Edit credits"
+
+#: templates/admin/dashboard.html
+msgid "Active"
+msgstr "Active"
+
+#: templates/admin/dashboard.html
+msgid "Inactive"
+msgstr "Inactive"
+
+#: templates/admin/dashboard.html
+msgid "Add"
+msgstr "Add"
+
+#: templates/admin/dashboard.html
+msgid "Remove"
+msgstr "Remove"
+
+#: templates/admin/dashboard.html
+msgid "No users yet."
+msgstr "No users yet."
+
+#: templates/settings.html
+msgid "User Settings"
+msgstr "User Settings"
+
+#: templates/settings.html
+msgid "Dashboard"
+msgstr "Dashboard"
+
+#: templates/settings.html
+msgid "Account"
+msgstr "Account"
+
+#: templates/settings.html
+msgid "Current plan"
+msgstr "Current plan"
+
+#: templates/settings.html
+msgid "Manage your subscription and payment method in Stripe."
+msgstr "Manage your subscription and payment method in Stripe."
+
+#: templates/settings.html
+msgid "Manage Subscription"
+msgstr "Manage Subscription"
+
+#: templates/settings.html
+msgid "Subscribe first to manage billing in the portal."
+msgstr "Subscribe first to manage billing in the portal."
+
+#: templates/settings.html
+msgid "Update Password"
+msgstr "Update Password"
+
+#: templates/settings.html
+msgid "Current password"
+msgstr "Current password"
+
+#: templates/settings.html
+msgid "New password"
+msgstr "New password"
+
+#: templates/settings.html
+msgid "Confirm new password"
+msgstr "Confirm new password"
+
+#: templates/base.html
+msgid "Admin"
+msgstr "Admin"
+
+#: templates/base.html (sidebar)
+msgid "Tools"
+msgstr "Tools"
+
+#: templates/base.html (sidebar)
+msgid "Professional Tools"
+msgstr "Professional Tools"
+
+#: templates/base.html (sidebar)
+msgid "Creative Tools"
+msgstr "Creative Tools"
+
+#: templates/base.html (sidebar)
+msgid "Admin Panel"
+msgstr "Admin Panel"
+
+#: templates/base.html (sidebar)
+msgid "Menu"
+msgstr "Menu"
+
+#: templates/base.html (sidebar lock)
+msgid "Upgrade to Pro"
+msgstr "Upgrade to Pro"
+
+#: templates/index.html (dashboard)
+msgid "Welcome back"
+msgstr "Welcome back"
+
+#: templates/index.html (dashboard)
+msgid "Search tools"
+msgstr "Search tools"
+
+#: templates/index.html (dashboard)
+msgid "Search tools by name..."
+msgstr "Search tools by name..."
+
+#: templates/index.html (dashboard)
+msgid "Recently Used"
+msgstr "Recently Used"
+
+#: templates/index.html (dashboard)
+msgid "Featured Tools"
+msgstr "Featured Tools"
+
+#: templates/index.html (dashboard)
+msgid "Upgrade to Ultimate"
+msgstr "Upgrade to Ultimate"
+
+#: templates/index.html (dashboard)
+msgid "Open Tool"
+msgstr "Open Tool"
+
+#: templates/index.html (dashboard)
+msgid "All tools"
+msgstr "All tools"
+
+#: templates/index.html (dashboard)
+msgid "Use the sidebar"
+msgstr "Use the sidebar"
+
+#: templates/index.html (dashboard)
+msgid "to browse Professional Suite and Creative Studio."
+msgstr "to browse Professional Suite and Creative Studio."
+
+#: templates/index.html (dashboard)
+msgid "Create professional content in seconds with artificial intelligence."
+msgstr "Create professional content in seconds with artificial intelligence."
+
+#: templates/index.html (dashboard)
+msgid "Access to Tools"
+msgstr "Access to Tools"
+
+#: templates/index.html (dashboard)
+msgid "To use AI tools, you need to log in or register."
+msgstr "To use AI tools, you need to log in or register."
+
+#: templates/index.html (dashboard)
+msgid "Log in"
+msgstr "Log in"
+
+#: templates/index.html (dashboard)
+msgid "Register"
+msgstr "Register"
+
+#: templates/auth/login.html
+msgid "Log in — AI Multi Tool"
+msgstr "Log in — AI Multi Tool"
+
+#: templates/auth/login.html
+msgid "Sign in to use AI tools and manage your credits."
+msgstr "Sign in to use AI tools and manage your credits."
+
+#: templates/auth/login.html templates/auth/register.html
+msgid "Password"
+msgstr "Password"
+
+#: templates/auth/login.html
+msgid "Remember me"
+msgstr "Remember me"
+
+#: templates/auth/login.html
+msgid "Don't have an account?"
+msgstr "Don't have an account?"
+
+#: templates/auth/login.html templates/auth/register.html
+msgid "Sign up"
+msgstr "Sign up"
+
+#: templates/auth/register.html
+msgid "Sign up — AI Multi Tool"
+msgstr "Sign up — AI Multi Tool"
+
+#: templates/auth/register.html
+msgid "Create account"
+msgstr "Create account"
+
+#: templates/auth/register.html
+msgid "Register to get 10 free credits to try our AI tools."
+msgstr "Register to get 10 free credits to try our AI tools."
+
+#: templates/auth/register.html
+msgid "Confirm password"
+msgstr "Confirm password"
+
+#: templates/auth/register.html
+msgid "At least 6 characters"
+msgstr "At least 6 characters"
+
+#: templates/auth/register.html
+msgid "Already have an account?"
+msgstr "Already have an account?"
+
+#: templates/auth/login.html templates/auth/register.html
+msgid "Email placeholder"
+msgstr "you@example.com"
+
+#: templates/auth/login.html templates/auth/register.html
+msgid "Password placeholder"
+msgstr "••••••••"
+
+#: templates/base.html (sidebar)
+msgid "Settings"
+msgstr "Settings"
+
+#: templates/base.html (language switcher)
+msgid "Language"
+msgstr "Language"
+
+#: templates/base.html (header brand)
+msgid "AI"
+msgstr "AI"
+
+#: templates/base.html (header brand)
+msgid "Multi Tools"
+msgstr "Multi Tools"
+
+#: templates/base.html (language names)
+msgid "English"
+msgstr "English"
+
+#: templates/base.html (language names)
+msgid "Ukrainian"
+msgstr "Ukrainian"
+
+#: templates/base.html (language names)
+msgid "Spanish"
+msgstr "Spanish"
+
+#: templates/base.html (language names)
+msgid "German"
+msgstr "German"
+
+#: templates/base.html (language names)
+msgid "French"
+msgstr "French"
+
+#: templates/base.html (language names)
+msgid "Russian"
+msgstr "Russian"
+
+#: templates/index.html (search)
+msgid "No tools found"
+msgstr "No tools found"
+
+#: templates/403.html
+msgid "Forbidden"
+msgstr "Forbidden"
+
+#: templates/403.html
+msgid "You do not have permission to access this page."
+msgstr "You do not have permission to access this page."
+
+#: templates/base.html (offcanvas close)
+msgid "Close"
+msgstr "Close"
+
+#: templates/base.html (sidebar)
+msgid "Professional Suite"
+msgstr "Professional Suite"
+
+#: templates/base.html (sidebar)
+msgid "Creative Studio"
+msgstr "Creative Studio"
+
+#: templates/base.html (sidebar)
+msgid "Account & Billing"
+msgstr "Account & Billing"
+
+#: templates/index.html (landing)
+msgid "Get started free"
+msgstr "Get started free"
+
+#: templates/index.html (landing)
+msgid "See full pricing"
+msgstr "See full pricing"
+
+#: templates/index.html (landing)
+msgid "Ready to create?"
+msgstr "Ready to create?"
+
+#: templates/index.html (landing)
+msgid "Sign up in seconds. No credit card required for the free plan."
+msgstr "Sign up in seconds. No credit card required for the free plan."
+
+#: templates/index.html (landing)
+msgid "Simple pricing"
+msgstr "Simple pricing"
+
+#: templates/base.html templates/index.html
+msgid "Blog"
+msgstr "Blog"
+
+#: templates/index.html (landing)
+msgid "Fast & simple"
+msgstr "Fast & simple"
+
+#: templates/index.html (landing)
+msgid "Why AI Multi Tools"
+msgstr "Why AI Multi Tools"
+
+#: templates/index.html (landing)
+msgid "Amazon, Shopify, Etsy, resumes, KDP, YouTube scripts, TikTok hooks, and Google Ads copy."
+msgstr "Amazon, Shopify, Etsy, resumes, KDP, YouTube scripts, TikTok hooks, and Google Ads copy."
+
+#: templates/index.html (landing)
+msgid "Finance, business, marketing, tech, health, education, travel, food, fitness, beauty, real estate, psychology."
+msgstr "Finance, business, marketing, tech, health, education, travel, food, fitness, beauty, real estate, psychology."
+
+#: templates/index.html (landing)
+msgid "Describe your task, get optimized content. Credits-based usage with flexible plans."
+msgstr "Describe your task, get optimized content. Credits-based usage with flexible plans."
+
+#: templates/index.html (landing)
+msgid "AI Multi Tools"
+msgstr "AI Multi Tools"
+
+#: templates/base.html
+msgid "Open menu"
+msgstr "Open menu"
+
+#: templates/base.html
+msgid "Toggle navigation"
+msgstr "Toggle navigation"
+
+#: templates/base.html
+msgid "Notifications"
+msgstr "Notifications"
+
+#: templates/base.html
+msgid "Main"
+msgstr "Main"
+
+#: templates/index.html (meta)
+msgid "AI Multi Tools - Create professional content in seconds with artificial intelligence"
+msgstr "AI Multi Tools - Create professional content in seconds with artificial intelligence"
+
+#: templates/index.html (meta)
+msgid "Create professional content in seconds with AI. Amazon, Shopify, Etsy, resumes, KDP, YouTube, TikTok, and 20+ tools. Free tier available."
+msgstr "Create professional content in seconds with AI. Amazon, Shopify, Etsy, resumes, KDP, YouTube, TikTok, and 20+ tools. Free tier available."
+
+#: templates/index.html (meta)
+msgid "AI multi tools, artificial intelligence, content creation, SEO content, Amazon, Shopify, Etsy"
+msgstr "AI multi tools, artificial intelligence, content creation, SEO content, Amazon, Shopify, Etsy"
+
+#: templates/index.html (meta)
+msgid "AI Multi Tools - Create Professional Content in Seconds"
+msgstr "AI Multi Tools - Create Professional Content in Seconds"
+
+#: templates/index.html (meta)
+msgid "Create professional content in seconds with AI. Free tier, Pro and Business plans. Start free."
+msgstr "Create professional content in seconds with AI. Free tier, Pro and Business plans. Start free."
+
+#: templates/index.html (meta)
+msgid "Create professional content in seconds with AI."
+msgstr "Create professional content in seconds with AI."
+
+#: templates/base.html (meta)
+msgid "AI Multi Tools - Create professional content in seconds"
+msgstr "AI Multi Tools - Create professional content in seconds"
+
+#: templates/blog/index.html
+msgid "Tips, guides, and updates about AI content creation."
+msgstr "Tips, guides, and updates about AI content creation."
+
+#: templates/blog/index.html
+msgid "Read more"
+msgstr "Read more"
+
+#: templates/blog/index.html
+msgid "No articles yet."
+msgstr "No articles yet."
+
+#: templates/blog/article.html
+msgid "Back to Blog"
+msgstr "Back to Blog"
+
+#: templates/blog/article.html
+msgid "By"
+msgstr "By"
+
+#: templates/blog/article.html
+msgid "Create content with AI"
+msgstr "Create content with AI"
+
+#: templates/blog/article.html
+msgid "Use our AI tools to generate professional content in seconds."
+msgstr "Use our AI tools to generate professional content in seconds."
+
+#: templates/blog/article.html
+msgid "Try AI Tools"
+msgstr "Try AI Tools"
+
+#: templates/blog/article.html
+msgid "Related articles"
+msgstr "Related articles"
+
+#: templates/index.html
+msgid "why"
+msgstr "Why"
+
+#: templates/index.html
+msgid "Choose a plan and scale when you need more."
+msgstr "Choose a plan and scale when you need more."
+
+#: templates/index.html
+msgid "Free"
+msgstr "Free"
+
+#: templates/index.html
+msgid "5 credits per day"
+msgstr "5 credits per day"
+
+#: templates/index.html
+msgid "Basic tools"
+msgstr "Basic tools"
+
+#: templates/index.html
+msgid "Limited features"
+msgstr "Limited features"
+
+#: templates/index.html
+msgid "Most popular"
+msgstr "Most popular"
+
+#: templates/index.html
+msgid "100 credits per month"
+msgstr "100 credits per month"
+
+#: templates/index.html
+msgid "All tools"
+msgstr "All tools"
+
+#: templates/index.html
+msgid "Priority processing"
+msgstr "Priority processing"
+
+#: templates/index.html
+msgid "Unlimited credits"
+msgstr "Unlimited credits"
+
+#: templates/index.html
+msgid "API access"
+msgstr "API access"
+
+#: templates/index.html
+msgid "Advanced analytics"
+msgstr "Advanced analytics"
+
+#: templates/index.html
+msgid "how_it_works"
+msgstr "How it works"
+
+#: templates/index.html
+msgid "how_it_works_subtitle"
+msgstr "Three steps from brief to ready copy."
+
+#: templates/index.html
+msgid "how_step_1_label"
+msgstr "Step 1"
+
+#: templates/index.html
+msgid "how_step_1_title"
+msgstr "Describe your task"
+
+#: templates/index.html
+msgid "how_step_1_desc"
+msgstr "Articles, listings, ads, emails—say it in one prompt."
+
+#: templates/index.html
+msgid "how_step_2_label"
+msgstr "Step 2"
+
+#: templates/index.html
+msgid "how_step_2_title"
+msgstr "AI creates content"
+
+#: templates/index.html
+msgid "how_step_2_desc"
+msgstr "Polished output in seconds, matched to your goal."
+
+#: templates/index.html
+msgid "how_step_3_label"
+msgstr "Step 3"
+
+#: templates/index.html
+msgid "how_step_3_title"
+msgstr "Copy, save, deploy"
+
+#: templates/index.html
+msgid "how_step_3_desc"
+msgstr "Grab text from history or clipboard—paste where you work."
+
+#: templates/index.html
+msgid "how_demo_input"
+msgstr "Write a tagline for a productivity app."
+
+#: templates/index.html
+msgid "how_demo_output"
+msgstr ""
+"Focus without friction.\n"
+"Ship your best work, daily."
+
+#: templates/index.html
+msgid "try_mindixo_ai"
+msgstr "Try Mindixo AI"
+
+#: templates/index.html
+msgid "examples_title"
+msgstr "Examples"
+
+#: templates/index.html
+msgid "examples_subtitle"
+msgstr "See how Mindixo AI generates real content from real prompts"
+
+#: templates/index.html
+msgid "examples_tab_blog"
+msgstr "Articles"
+
+#: templates/index.html
+msgid "examples_tab_product"
+msgstr "Products"
+
+#: templates/index.html
+msgid "examples_tab_ads"
+msgstr "Ads"
+
+#: templates/index.html
+msgid "examples_label_input"
+msgstr "Input"
+
+#: templates/index.html
+msgid "examples_label_output"
+msgstr "AI Result"
+
+#: templates/index.html
+msgid "examples_generated_in_seconds"
+msgstr "Generated in seconds"
+
+#: templates/index.html
+msgid "examples_ai_generating"
+msgstr "AI is generating…"
+
+#: templates/index.html
+msgid "examples_demo_generate"
+msgstr "Generate"
+
+#: templates/index.html
+msgid "examples_demo_loading"
+msgstr "Generating…"
+
+#: templates/index.html
+msgid "examples_blog_input"
+msgstr "Write an introduction for an article about the benefits of morning exercise"
+
+#: templates/index.html
+msgid "examples_blog_output"
+msgstr ""
+"Morning movement does not need to be intense to be effective.\n"
+"A steady rhythm trains your focus before the day gets noisy.\n"
+"Start with hydration, then ten minutes of mobility or a brisk walk.\n"
+"Track how you feel for two weeks—energy and sleep usually improve first.\n"
+"That is how small habits compound into lasting change."
+
+#: templates/index.html
+msgid "examples_product_input"
+msgstr "Describe wireless headphones for an online store"
+
+#: templates/index.html
+msgid "examples_product_output"
+msgstr ""
+"Modern wireless headphones deliver crisp sound, all-day comfort, and battery life that lasts through commutes and work sessions.\n"
+"Stable Bluetooth, a secure fit, and intuitive controls so you can focus on your music—not the wires.\n"
+"Add them to your cart and feel the difference on your next call or workout."
+
+#: templates/index.html
+msgid "examples_ads_input"
+msgstr "Create ad copy for a fitness program"
+
+#: templates/index.html
+msgid "examples_ads_output"
+msgstr ""
+"Want your dream body without burning out? Start today with our structured fitness program.\n"
+"Short workouts, smart progressions, and coach-style accountability—built for real schedules.\n"
+"Your first week is on us. Join thousands who already made the switch."
+
+#: templates/index.html
+msgid "examples_actions_toolbar"
+msgstr "Result actions"
+
+#: templates/index.html
+msgid "examples_action_copy"
+msgstr "Copy"
+
+#: templates/index.html
+msgid "examples_action_edit"
+msgstr "Edit"
+
+#: templates/index.html
+msgid "examples_action_done"
+msgstr "Done"
+
+#: templates/index.html
+msgid "examples_action_use"
+msgstr "Use this result"
+
+#: templates/index.html
+msgid "examples_action_copied"
+msgstr "Copied"
+
+#: templates/index.html
+msgid "examples_cta_primary"
+msgstr "Generate your first result"
+

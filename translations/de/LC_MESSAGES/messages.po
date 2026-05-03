@@ -1,0 +1,802 @@
+# German translations for PROJECT.
+# Copyright (C) 2026 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2026-03-08 17:54-0700\n"
+"PO-Revision-Date: 2026-03-13 22:50-0700\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: de\n"
+"Language-Team: de <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.13.1\n"
+
+#: templates/tool.html
+msgid "Generate"
+msgstr "Generieren"
+
+#: templates/tool.html
+msgid "Describe your task..."
+msgstr "Beschreiben Sie Ihre Aufgabe..."
+
+#: templates/tool.html
+msgid "Result:"
+msgstr "Ergebnis:"
+
+#: templates/tool.html
+msgid "About This Tool"
+msgstr "Über dieses Tool"
+
+#: templates/tool.html
+msgid "Back to Dashboard"
+msgstr "Zurück zum Dashboard"
+
+#: templates/tool.html
+msgid "Generating..."
+msgstr "Wird generiert..."
+
+#: templates/tool.html
+msgid "Error:"
+msgstr "Fehler:"
+
+#: templates/base.html templates/index.html
+msgid "All rights reserved"
+msgstr "Alle Rechte vorbehalten"
+
+#: templates/index.html
+msgid "Log out"
+msgstr "Abmelden"
+
+#: templates/index.html
+msgid "Professional AI Tools"
+msgstr "Professionelle KI-Tools"
+
+#: templates/index.html
+msgid "Personal & Creative Tools"
+msgstr "Persönliche & kreative Tools"
+
+#: templates/base.html
+msgid "Credits"
+msgstr "Guthaben"
+
+#: templates/index.html
+msgid "AI Dashboard - All Tools"
+msgstr "KI-Dashboard – Alle Tools"
+
+#: templates/base.html templates/pricing.html
+msgid "Pricing"
+msgstr "Preise"
+
+#: templates/pricing.html
+msgid "Pricing Plans"
+msgstr "Preispläne"
+
+#: templates/pricing.html
+msgid ""
+"Choose the plan that fits your needs. Start free, scale when you are "
+"ready."
+msgstr "Wählen Sie den passenden Plan. Starten Sie kostenlos, skalieren Sie bei Bedarf."
+
+#: templates/pricing.html
+msgid "Starter"
+msgstr "Starter"
+
+#: templates/pricing.html
+msgid "Pro"
+msgstr "Pro"
+
+#: templates/pricing.html
+msgid "Business"
+msgstr "Business"
+
+#: templates/pricing.html
+msgid "month"
+msgstr "Monat"
+
+#: templates/pricing.html
+msgid "10 Free Credits"
+msgstr "10 kostenlose Guthaben"
+
+#: templates/pricing.html
+msgid "Basic AI Access"
+msgstr "Basis-KI-Zugang"
+
+#: templates/pricing.html
+msgid "500 Credits"
+msgstr "500 Guthaben"
+
+#: templates/pricing.html
+msgid "2000 Credits"
+msgstr "2000 Guthaben"
+
+#: templates/pricing.html
+msgid "Professional Tools"
+msgstr "Professionelle Tools"
+
+#: templates/pricing.html
+msgid "Unlimited Access"
+msgstr "Unbegrenzter Zugang"
+
+#: templates/pricing.html
+msgid "Buy Now"
+msgstr "Jetzt kaufen"
+
+#: templates/pricing.html
+msgid "Popular"
+msgstr "Beliebt"
+
+#: templates/pricing.html
+msgid "Paid plans: coming soon. For now, sign up and get 10 free credits."
+msgstr "Kostenpflichtige Pläne: demnächst. Jetzt anmelden und 10 Guthaben erhalten."
+
+#: templates/index.html
+msgid "Subscription inactive. Your credits are currently locked."
+msgstr "Abonnement inaktiv. Ihre Guthaben sind gesperrt."
+
+#: templates/index.html
+msgid "View plans"
+msgstr "Pläne ansehen"
+
+#: templates/admin/dashboard.html
+msgid "Admin Dashboard"
+msgstr "Admin-Dashboard"
+
+#: templates/admin/dashboard.html
+msgid "ID"
+msgstr "ID"
+
+#: templates/admin/dashboard.html
+msgid "Manage users and credits."
+msgstr "Benutzer und Guthaben verwalten."
+
+#: templates/admin/dashboard.html templates/settings.html
+msgid "Email"
+msgstr "E-Mail"
+
+#: templates/admin/dashboard.html
+msgid "Subscription"
+msgstr "Abonnement"
+
+#: templates/admin/dashboard.html
+msgid "Join Date"
+msgstr "Beitrittsdatum"
+
+#: templates/admin/dashboard.html
+msgid "Edit credits"
+msgstr "Guthaben bearbeiten"
+
+#: templates/admin/dashboard.html
+msgid "Active"
+msgstr "Aktiv"
+
+#: templates/admin/dashboard.html
+msgid "Inactive"
+msgstr "Inaktiv"
+
+#: templates/admin/dashboard.html
+msgid "Add"
+msgstr "Hinzufügen"
+
+#: templates/admin/dashboard.html
+msgid "Remove"
+msgstr "Entfernen"
+
+#: templates/admin/dashboard.html
+msgid "No users yet."
+msgstr "Noch keine Benutzer."
+
+#: templates/settings.html
+msgid "User Settings"
+msgstr "Benutzereinstellungen"
+
+#: templates/settings.html
+msgid "Dashboard"
+msgstr "Dashboard"
+
+#: templates/settings.html
+msgid "Account"
+msgstr "Konto"
+
+#: templates/settings.html
+msgid "Current plan"
+msgstr "Aktueller Plan"
+
+#: templates/settings.html
+msgid "Manage your subscription and payment method in Stripe."
+msgstr "Verwalten Sie Abonnement und Zahlungsmethode in Stripe."
+
+#: templates/settings.html
+msgid "Manage Subscription"
+msgstr "Abonnement verwalten"
+
+#: templates/settings.html
+msgid "Subscribe first to manage billing in the portal."
+msgstr "Zuerst abonnieren, um die Abrechnung im Portal zu verwalten."
+
+#: templates/settings.html
+msgid "Update Password"
+msgstr "Passwort aktualisieren"
+
+#: templates/settings.html
+msgid "Current password"
+msgstr "Aktuelles Passwort"
+
+#: templates/settings.html
+msgid "New password"
+msgstr "Neues Passwort"
+
+#: templates/settings.html
+msgid "Confirm new password"
+msgstr "Neues Passwort bestätigen"
+
+#: templates/base.html
+msgid "Admin"
+msgstr "Admin"
+
+#: templates/auth/login.html templates/auth/register.html
+msgid "Email placeholder"
+msgstr "sie@beispiel.de"
+
+#: templates/auth/login.html templates/auth/register.html
+msgid "Password placeholder"
+msgstr "••••••••"
+
+#: templates/403.html
+msgid "Forbidden"
+msgstr "Verboten"
+
+#: templates/403.html
+msgid "You do not have permission to access this page."
+msgstr "Sie haben keine Berechtigung, auf diese Seite zuzugreifen."
+
+#: templates/blog/index.html
+msgid "Tips, guides, and updates about AI content creation."
+msgstr "Tipps, Anleitungen und Neuigkeiten zur KI-Content-Erstellung."
+
+#: templates/blog/index.html
+msgid "Read more"
+msgstr "Weiterlesen"
+
+#: templates/blog/index.html
+msgid "No articles yet."
+msgstr "Noch keine Artikel."
+
+#: templates/blog/article.html
+msgid "Back to Blog"
+msgstr "Zurück zum Blog"
+
+#: templates/blog/article.html
+msgid "By"
+msgstr "Von"
+
+#: templates/blog/article.html
+msgid "Create content with AI"
+msgstr "Content mit KI erstellen"
+
+#: templates/blog/article.html
+msgid "Use our AI tools to generate professional content in seconds."
+msgstr "Erstellen Sie in Sekunden professionelle Inhalte mit unseren KI-Tools."
+
+#: templates/blog/article.html
+msgid "Try AI Tools"
+msgstr "KI-Tools ausprobieren"
+
+#: templates/blog/article.html
+msgid "Related articles"
+msgstr "Verwandte Artikel"
+
+# (added)
+msgid "Choose the plan that fits your needs. Start free, scale when you are ready."
+msgstr "Choose the plan that fits your needs. Start free, scale when you are ready."
+
+# (added)
+msgid "Get started"
+msgstr "Loslegen"
+
+# (added)
+msgid "All plans include access to the dashboard and AI tools. Secure payment via Stripe."
+msgstr "Alle Pläne beinhalten Zugang zum Dashboard und KI-Tools. Sichere Zahlung über Stripe."
+
+# (added)
+msgid "Tools"
+msgstr "Tools"
+
+# (added)
+msgid "Creative Tools"
+msgstr "Kreative Tools"
+
+# (added)
+msgid "Admin Panel"
+msgstr "Admin-Bereich"
+
+# (added)
+msgid "Menu"
+msgstr "Menü"
+
+# (added)
+msgid "Upgrade to Pro"
+msgstr "Auf Pro upgraden"
+
+# (added)
+msgid "Welcome back"
+msgstr "Willkommen zurück"
+
+# (added)
+msgid "Search tools"
+msgstr "Tools suchen"
+
+# (added)
+msgid "Search tools by name..."
+msgstr "Tools nach Name suchen..."
+
+# (added)
+msgid "Recently Used"
+msgstr "Zuletzt verwendet"
+
+# (added)
+msgid "Featured Tools"
+msgstr "Empfohlene Tools"
+
+# (added)
+msgid "Upgrade to Ultimate"
+msgstr "Auf Ultimate upgraden"
+
+# (added)
+msgid "Open Tool"
+msgstr "Tool öffnen"
+
+# (added)
+msgid "All tools"
+msgstr "Alle Tools"
+
+# (added)
+msgid "Use the sidebar"
+msgstr "Sidebar nutzen"
+
+# (added)
+msgid "to browse Professional Suite and Creative Studio."
+msgstr "um Professional Suite und Creative Studio zu durchsuchen."
+
+# (added)
+msgid "Create professional content in seconds with artificial intelligence."
+msgstr "Erstellen Sie in Sekunden professionelle Inhalte mit KI."
+
+# (added)
+msgid "Access to Tools"
+msgstr "Zugang zu Tools"
+
+# (added)
+msgid "To use AI tools, you need to log in or register."
+msgstr "Melden Sie sich an oder registrieren Sie sich für KI-Tools."
+
+# (added)
+msgid "Log in"
+msgstr "Anmelden"
+
+# (added)
+msgid "Register"
+msgstr "Registrieren"
+
+# (added)
+msgid "Log in — AI Multi Tool"
+msgstr "Anmelden — AI Multi Tool"
+
+# (added)
+msgid "Sign in to use AI tools and manage your credits."
+msgstr "Melden Sie sich an, um KI-Tools zu nutzen und Credits zu verwalten."
+
+# (added)
+msgid "Password"
+msgstr "Passwort"
+
+# (added)
+msgid "Remember me"
+msgstr "Angemeldet bleiben"
+
+# (added)
+msgid "Don't have an account?"
+msgstr "Noch kein Konto?"
+
+# (added)
+msgid "Sign up"
+msgstr "Registrieren"
+
+# (added)
+msgid "Sign up — AI Multi Tool"
+msgstr "Registrieren — AI Multi Tool"
+
+# (added)
+msgid "Create account"
+msgstr "Konto erstellen"
+
+# (added)
+msgid "Register to get 10 free credits to try our AI tools."
+msgstr "Registrieren Sie sich und erhalten Sie 10 kostenlose Credits."
+
+# (added)
+msgid "Confirm password"
+msgstr "Passwort bestätigen"
+
+# (added)
+msgid "At least 6 characters"
+msgstr "Mindestens 6 Zeichen"
+
+# (added)
+msgid "Already have an account?"
+msgstr "Bereits ein Konto?"
+
+# (added)
+msgid "Settings"
+msgstr "Einstellungen"
+
+# (added)
+msgid "Language"
+msgstr "Sprache"
+
+# (added)
+msgid "AI"
+msgstr "KI"
+
+# (added)
+msgid "Multi Tools"
+msgstr "Multi-Tools"
+
+# (added)
+msgid "English"
+msgstr "Englisch"
+
+# (added)
+msgid "Ukrainian"
+msgstr "Ukrainisch"
+
+# (added)
+msgid "Spanish"
+msgstr "Spanisch"
+
+# (added)
+msgid "German"
+msgstr "Deutsch"
+
+# (added)
+msgid "French"
+msgstr "Französisch"
+
+# (added)
+msgid "Russian"
+msgstr "Russisch"
+
+# (added)
+msgid "No tools found"
+msgstr "Keine Tools gefunden"
+
+# (added)
+msgid "Close"
+msgstr "Schließen"
+
+# (added)
+msgid "Professional Suite"
+msgstr "Professional Suite"
+
+# (added)
+msgid "Creative Studio"
+msgstr "Creative Studio"
+
+# (added)
+msgid "Account & Billing"
+msgstr "Konto & Abrechnung"
+
+# (added)
+msgid "Get started free"
+msgstr "Kostenlos starten"
+
+# (added)
+msgid "See full pricing"
+msgstr "Preise ansehen"
+
+# (added)
+msgid "Ready to create?"
+msgstr "Bereit zu erstellen?"
+
+# (added)
+msgid "Sign up in seconds. No credit card required for the free plan."
+msgstr "In Sekunden registrieren. Keine Karte für den kostenlosen Plan nötig."
+
+# (added)
+msgid "Simple pricing"
+msgstr "Einfache Preise"
+
+# (added)
+msgid "Blog"
+msgstr "Blog"
+
+# (added)
+msgid "Fast & simple"
+msgstr "Schnell und einfach"
+
+# (added)
+msgid "Why AI Multi Tools"
+msgstr "Warum AI Multi Tools"
+
+# (added)
+msgid "Amazon, Shopify, Etsy, resumes, KDP, YouTube scripts, TikTok hooks, and Google Ads copy."
+msgstr "Amazon, Shopify, Etsy, Lebensläufe, KDP, YouTube-Skripte, TikTok, Google Ads."
+
+# (added)
+msgid "Finance, business, marketing, tech, health, education, travel, food, fitness, beauty, real estate, psychology."
+msgstr "Finanzen, Business, Marketing, Technik, Gesundheit, Bildung, Reisen, Essen, Fitness, Beauty, Immobilien, Psychologie."
+
+# (added)
+msgid "Describe your task, get optimized content. Credits-based usage with flexible plans."
+msgstr "Beschreiben Sie Ihre Aufgabe, erhalten Sie optimierte Inhalte. Nutzung auf Kreditbasis mit flexiblen Plänen."
+
+# (added)
+msgid "AI Multi Tools"
+msgstr "AI Multi Tools"
+
+# (added)
+msgid "Open menu"
+msgstr "Menü öffnen"
+
+# (added)
+msgid "Toggle navigation"
+msgstr "Navigation umschalten"
+
+# (added)
+msgid "Notifications"
+msgstr "Benachrichtigungen"
+
+# (added)
+msgid "Main"
+msgstr "Haupt"
+
+# (added)
+msgid "AI Multi Tools - Create professional content in seconds with artificial intelligence"
+msgstr "AI Multi Tools — professionelle Inhalte in Sekunden mit KI erstellen"
+
+# (added)
+msgid "Create professional content in seconds with AI. Amazon, Shopify, Etsy, resumes, KDP, YouTube, TikTok, and 20+ tools. Free tier available."
+msgstr "Erstellen Sie in Sekunden professionelle Inhalte mit KI. Amazon, Shopify, Etsy, Lebensläufe, KDP, YouTube, TikTok und 20+ Tools. Kostenloser Plan verfügbar."
+
+# (added)
+msgid "AI multi tools, artificial intelligence, content creation, SEO content, Amazon, Shopify, Etsy"
+msgstr "KI-Multi-Tools, künstliche Intelligenz, Content-Erstellung, SEO, Amazon, Shopify, Etsy"
+
+# (added)
+msgid "AI Multi Tools - Create Professional Content in Seconds"
+msgstr "AI Multi Tools — professionelle Inhalte in Sekunden erstellen"
+
+# (added)
+msgid "Create professional content in seconds with AI. Free tier, Pro and Business plans. Start free."
+msgstr "Erstellen Sie in Sekunden Inhalte mit KI. Kostenloser, Pro- und Business-Plan. Kostenlos starten."
+
+# (added)
+msgid "Create professional content in seconds with AI."
+msgstr "Erstellen Sie in Sekunden professionelle Inhalte mit KI."
+
+# (added)
+msgid "AI Multi Tools - Create professional content in seconds"
+msgstr "AI Multi Tools — professionelle Inhalte in Sekunden erstellen"
+
+#: templates/index.html
+msgid "why"
+msgstr "Warum"
+
+#: templates/index.html
+msgid "Choose a plan and scale when you need more."
+msgstr "Wählen Sie einen Plan und skalieren Sie bei Bedarf."
+
+#: templates/index.html
+msgid "Free"
+msgstr "Kostenlos"
+
+#: templates/index.html
+msgid "5 credits per day"
+msgstr "5 Credits pro Tag"
+
+#: templates/index.html
+msgid "Basic tools"
+msgstr "Basis-Tools"
+
+#: templates/index.html
+msgid "Limited features"
+msgstr "Eingeschränkte Funktionen"
+
+#: templates/index.html
+msgid "Most popular"
+msgstr "Am beliebtesten"
+
+#: templates/index.html
+msgid "100 credits per month"
+msgstr "100 Credits pro Monat"
+
+#: templates/index.html
+msgid "All tools"
+msgstr "Alle Tools"
+
+#: templates/index.html
+msgid "Priority processing"
+msgstr "Priorisierte Verarbeitung"
+
+#: templates/index.html
+msgid "Unlimited credits"
+msgstr "Unbegrenzte Credits"
+
+#: templates/index.html
+msgid "API access"
+msgstr "API-Zugang"
+
+#: templates/index.html
+msgid "Advanced analytics"
+msgstr "Erweiterte Analysen"
+
+#: templates/index.html
+msgid "how_it_works"
+msgstr "So funktioniert es"
+
+#: templates/index.html
+msgid "how_it_works_subtitle"
+msgstr "Drei Schritte von der Idee zum fertigen Text."
+
+#: templates/index.html
+msgid "how_step_1_label"
+msgstr "Schritt 1"
+
+#: templates/index.html
+msgid "how_step_1_title"
+msgstr "Aufgabe beschreiben"
+
+#: templates/index.html
+msgid "how_step_1_desc"
+msgstr "Artikel, Listing, Anzeige – ein Prompt."
+
+#: templates/index.html
+msgid "how_step_2_label"
+msgstr "Schritt 2"
+
+#: templates/index.html
+msgid "how_step_2_title"
+msgstr "KI erstellt Inhalt"
+
+#: templates/index.html
+msgid "how_step_2_desc"
+msgstr "Feinschliff in Sekunden, passend zu deinem Ziel."
+
+#: templates/index.html
+msgid "how_step_3_label"
+msgstr "Schritt 3"
+
+#: templates/index.html
+msgid "how_step_3_title"
+msgstr "Kopieren, speichern, nutzen"
+
+#: templates/index.html
+msgid "how_step_3_desc"
+msgstr "Aus Zwischenablage oder Historie – direkt einsetzen."
+
+#: templates/index.html
+msgid "how_demo_input"
+msgstr "Schreib einen Slogan für eine Produktivitäts-App."
+
+#: templates/index.html
+msgid "how_demo_output"
+msgstr ""
+"Fokus ohne Reibung.\n"
+"Bring täglich deine beste Arbeit."
+
+#: templates/index.html
+msgid "try_mindixo_ai"
+msgstr "Mindixo AI ausprobieren"
+
+#: templates/index.html
+msgid "examples_title"
+msgstr "Beispielergebnisse"
+
+#: templates/index.html
+msgid "examples_subtitle"
+msgstr "So erzeugt Mindixo AI echte Inhalte aus echten Prompts"
+
+#: templates/index.html
+msgid "examples_tab_blog"
+msgstr "Artikel"
+
+#: templates/index.html
+msgid "examples_tab_product"
+msgstr "Produkte"
+
+#: templates/index.html
+msgid "examples_tab_ads"
+msgstr "Werbung"
+
+#: templates/index.html
+msgid "examples_label_input"
+msgstr "Eingabe"
+
+#: templates/index.html
+msgid "examples_label_output"
+msgstr "KI-Ergebnis"
+
+#: templates/index.html
+msgid "examples_generated_in_seconds"
+msgstr "In Sekunden generiert"
+
+#: templates/index.html
+msgid "examples_ai_generating"
+msgstr "KI generiert…"
+
+#: templates/index.html
+msgid "examples_demo_generate"
+msgstr "Generieren"
+
+#: templates/index.html
+msgid "examples_demo_loading"
+msgstr "Wird generiert…"
+
+#: templates/index.html
+msgid "examples_blog_input"
+msgstr "Schreibe eine Einleitung für einen Artikel über die Vorteile von Morgensport"
+
+#: templates/index.html
+msgid "examples_blog_output"
+msgstr ""
+"Morgendliche Bewegung muss nicht hart sein, um zu wirken.\n"
+"Ein ruhiger Rhythmus trainiert den Fokus, bevor der Tag laut wird.\n"
+"Starte mit Wasser, dann zehn Minuten Mobility oder zügiges Gehen.\n"
+"Notiere zwei Wochen lang, wie du dich fühlst—oft zuerst Energie und Schlaf.\n"
+"So werden kleine Gewohnheiten zu dauerhaften Fortschritten."
+
+#: templates/index.html
+msgid "examples_product_input"
+msgstr "Beschreibe kabellose Kopfhörer für einen Onlineshop"
+
+#: templates/index.html
+msgid "examples_product_output"
+msgstr ""
+"Moderne kabellose Kopfhörer liefern klaren Klang, Komfort und lange Laufzeit — ideal für Zuhause, Pendeln und Training.\n"
+"Stabiles Bluetooth, bequemer Sitz und intuitive Bedienung, damit du dich auf die Musik konzentrierst.\n"
+"Lege sie in den Warenkorb und spüre den Unterschied ab dem ersten Tag."
+
+#: templates/index.html
+msgid "examples_ads_input"
+msgstr "Erstelle Werbetext für ein Fitnessprogramm"
+
+#: templates/index.html
+msgid "examples_ads_output"
+msgstr ""
+"Traumkörper ohne auszubrennen? Starte heute mit unserem strukturierten Fitnessprogramm.\n"
+"Kurze Workouts, kluge Progression und Coach-Style-Accountability — für echte Alltagstakte.\n"
+"Die erste Woche geht auf uns. Schließ dich an, die schon durchgestartet sind."
+
+#: templates/index.html
+msgid "examples_actions_toolbar"
+msgstr "Aktionen für das Ergebnis"
+
+#: templates/index.html
+msgid "examples_action_copy"
+msgstr "Kopieren"
+
+#: templates/index.html
+msgid "examples_action_edit"
+msgstr "Bearbeiten"
+
+#: templates/index.html
+msgid "examples_action_done"
+msgstr "Fertig"
+
+#: templates/index.html
+msgid "examples_action_use"
+msgstr "Dieses Ergebnis nutzen"
+
+#: templates/index.html
+msgid "examples_action_copied"
+msgstr "Kopiert"
+
+#: templates/index.html
+msgid "examples_cta_primary"
+msgstr "Erstes Ergebnis erstellen"

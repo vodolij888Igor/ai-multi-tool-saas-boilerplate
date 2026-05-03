@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="{{ get_locale() or 'en' }}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}MindixoAI{% endblock %}</title>
+    <meta name="description" content="{% block meta_description %}MindixoAI - {{ _('Create professional content in seconds with artificial intelligence') }}{% endblock %}">
+    <meta name="keywords" content="{% block meta_keywords %}{{ _('AI multi tools, artificial intelligence, content creation, SEO content') }}{% endblock %}">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{% block og_url %}{{ request.url }}{% endblock %}">
+    <meta property="og:title" content="{% block og_title %}MindixoAI{% endblock %}">
+    <meta property="og:description" content="{% block og_description %}MindixoAI - {{ _('Create professional content in seconds') }}{% endblock %}">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:title" content="{% block twitter_title %}MindixoAI{% endblock %}">
+    <meta property="twitter:description" content="{% block twitter_description %}MindixoAI - {{ _('Create professional content in seconds') }}{% endblock %}">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="{% block canonical_url %}{{ request.url }}{% endblock %}">
+    <!-- Temporary production logo (PNG only) -->
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='images/branding/logo-source.png') }}">
+    
+    <!-- Google Fonts: Poppins for premium brand -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body data-bs-theme="light">
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg fixed-top premium-header">
+        <div class="container premium-header__container">
+            <a class="navbar-brand premium-header__brand" href="{{ url_for('ai.dashboard') }}">
+                <span class="premium-header__brand-inner">
+                    <span class="brand-logo-wrap premium-header__icon navbar-logo">
+                        <img class="brand-logo" src="{{ url_for('static', filename='images/branding/logo-source.png') }}" width="40" height="40" alt="" decoding="async">
+                    </span>
+                    <span class="premium-header__text brand font-brand"><span class="brand-word">Mindixo</span><span class="brand-accent ai-accent">AI</span></span>
+                </span>
+            </a>
+            {% if current_user.is_authenticated %}
+            <button class="btn btn-link premium-header__nav-link d-lg-none me-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebarOffcanvas" aria-label="{{ _('Open menu') }}">
+                <i class="bi bi-list" style="font-size: 1.4rem;"></i>
+            </button>
+            {% endif %}
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-label="{{ _('Toggle navigation') }}">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto align-items-center">
+                    <li class="nav-item">
+                        <a class="nav-link premium-header__nav-link" href="{{ url_for('blog.index') }}">{{ _('Blog') }}</a>
+                    </li>
+                    {% if not current_user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link premium-header__nav-link" href="{{ url_for('billing.pricing') }}">{{ _('Pricing') }}</a>
+                    </li>
+                    {% endif %}
+                    <!-- Language switcher: compact, premium -->
+                    <li class="nav-item dropdown lang-switcher">
+                        <a class="nav-link premium-header__nav-link lang-switcher__btn dropdown-toggle d-flex align-items-center" href="#" id="languageDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="{{ _('Language') }}">
+                            <i class="bi bi-globe2 lang-switcher__icon" aria-hidden="true"></i>
+                            <span class="lang-switcher__code d-none d-sm-inline">{% if get_locale() == 'uk' %}UA{% elif get_locale() == 'en' %}EN{% elif get_locale() == 'es' %}ES{% elif get_locale() == 'ru' %}RU{% elif get_locale() == 'de' %}DE{% elif get_locale() == 'fr' %}FR{% else %}EN{% endif %}</span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end lang-switcher__menu" aria-labelledby="languageDropdown">
+                            <li><a class="dropdown-item lang-switcher__item" href="{{ url_for('set_language', lang_code='en') }}"><span class="lang-switcher__flag" aria-hidden="true">🇺🇸</span> English</a></li>
+                            <li><a class="dropdown-item lang-switcher__item" href="{{ url_for('set_language', lang_code='uk') }}"><span class="lang-switcher__flag" aria-hidden="true">🇺🇦</span> Українська</a></li>
+                            <li><a class="dropdown-item lang-switcher__item" href="{{ url_for('set_language', lang_code='es') }}"><span class="lang-switcher__flag" aria-hidden="true">🇪🇸</span> Español</a></li>
+                            <li><a class="dropdown-item lang-switcher__item" href="{{ url_for('set_language', lang_code='de') }}"><span class="lang-switcher__flag" aria-hidden="true">🇩🇪</span> Deutsch</a></li>
+                            <li><a class="dropdown-item lang-switcher__item" href="{{ url_for('set_language', lang_code='fr') }}"><span class="lang-switcher__flag" aria-hidden="true">🇫🇷</span> Français</a></li>
+                            <li><a class="dropdown-item lang-switcher__item" href="{{ url_for('set_language', lang_code='ru') }}"><span class="lang-switcher__flag" aria-hidden="true">🇷🇺</span> Русский</a></li>
+                        </ul>
+                    </li>
+                    <!-- Theme Toggle -->
+                    <li class="nav-item">
+                        <button class="btn btn-link nav-link premium-header__nav-link" id="themeToggle" type="button" aria-label="{{ _('Toggle theme') }}">
+                            <i class="bi bi-moon-stars" id="themeIcon"></i>
+                        </button>
+                    </li>
+                    <!-- User Profile -->
+                    {% if current_user.is_authenticated %}
+                    <li class="nav-item dropdown">
+                        <a class="nav-link premium-header__nav-link dropdown-toggle d-flex align-items-center" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown">
+                            <i class="bi bi-person-circle me-1"></i>
+                            <span class="d-none d-sm-inline">{{ current_user.email }}</span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><span class="dropdown-item-text text-muted small">{{ current_user.email }}</span></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="{{ url_for('auth.logout') }}"><i class="bi bi-box-arrow-right"></i> {% block logout_text %}{{ _('Log out') }}{% endblock %}</a></li>
+                        </ul>
+                    </li>
+                    {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link premium-header__nav-link" href="{{ url_for('auth.login') }}">{{ _('Log in') }}</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link premium-header__nav-link" href="{{ url_for('auth.register') }}">{{ _('Sign up') }}</a>
+                    </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Flash Messages (Phase B: fixed top-right below nav) -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <div class="flash-toast-container" role="region" aria-label="{{ _('Notifications') }}">
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ category }} alert-dismissible fade show flash-toast" role="alert">
+                        {{ message }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="{{ _('Close') }}"></button>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    {% endwith %}
+
+    {% if is_admin and tier_preview %}
+    <div class="alert alert-info alert-dismissible fade show rounded-0 mb-0 text-center py-2" role="alert">
+        <i class="bi bi-eye"></i> {{ _('Previewing as') }}: <strong>{{ tier_preview }}</strong>. {{ _('Your access is full.') }}
+        <a href="{{ url_for('admin.admin_dashboard') }}" class="alert-link ms-2">{{ _('Change in Admin') }}</a>
+        <button type="button" class="btn-close btn-close-sm" data-bs-dismiss="alert" aria-label="{{ _('Close') }}"></button>
+    </div>
+    {% endif %}
+
+    <!-- App Layout: Sidebar + Main -->
+    <div class="app-layout {% if not current_user.is_authenticated %}app-layout--no-sidebar{% endif %}">
+        {% if current_user.is_authenticated %}
+        <!-- Desktop Sidebar (Ultimate Edition: fixed, dark-themed) -->
+        <aside class="app-sidebar app-sidebar--ultimate d-none d-lg-flex" role="navigation" aria-label="{{ _('Main') }}">
+            <nav class="app-sidebar__nav">
+                <a class="app-sidebar__item{% if request.endpoint == 'ai.dashboard' %} app-sidebar__item--active{% endif %}" href="{{ url_for('ai.dashboard') }}">
+                    <i class="bi bi-house-door"></i>
+                    <span>{{ _('Dashboard') }}</span>
+                </a>
+                <div id="sidebarAccordion" class="app-sidebar__accordion">
+                    <div class="app-sidebar__group">
+                        <button type="button" class="app-sidebar__group-title" data-bs-toggle="collapse" data-bs-target="#sidebarProCollapse" data-bs-parent="#sidebarAccordion" aria-expanded="false" aria-controls="sidebarProCollapse">
+                            <i class="bi bi-briefcase"></i>
+                            <span>{{ _('Professional Suite') }}</span>
+                            <i class="bi bi-chevron-down app-sidebar__chevron"></i>
+                        </button>
+                        <div class="collapse" id="sidebarProCollapse">
+                            {% for tool in sidebar_professional_tools %}
+                            <a class="app-sidebar__subitem app-sidebar__subitem--professional{% if request.endpoint == 'ai.tool_page' and request.view_args and request.view_args.get('tool_name') == tool.tool_name %} app-sidebar__subitem--active{% endif %}" href="{{ url_for('ai.tool_page', tool_name=tool.tool_name) }}">
+                                <span class="app-sidebar__tool-icon">{{ tool.icon }}</span>
+                                <span>{{ tool.name }}</span>
+                            </a>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div class="app-sidebar__group">
+                        <button type="button" class="app-sidebar__group-title" data-bs-toggle="collapse" data-bs-target="#sidebarCreativeCollapse" data-bs-parent="#sidebarAccordion" aria-expanded="false" aria-controls="sidebarCreativeCollapse">
+                            <i class="bi bi-palette"></i>
+                            <span>{{ _('Creative Studio') }}</span>
+                            <i class="bi bi-chevron-down app-sidebar__chevron"></i>
+                        </button>
+                        <div class="collapse" id="sidebarCreativeCollapse">
+                            {% for tool in sidebar_creative_tools %}
+                            <a class="app-sidebar__subitem app-sidebar__subitem--creative{% if request.endpoint == 'ai.tool_page' and request.view_args and request.view_args.get('tool_name') == tool.tool_name %} app-sidebar__subitem--active{% endif %}" href="{{ url_for('ai.tool_page', tool_name=tool.tool_name) if user_package != 'Starter' else url_for('billing.pricing') }}">
+                                <span class="app-sidebar__tool-icon">{{ tool.icon }}</span>
+                                <span>{{ tool.name }}</span>
+                                {% if user_package == 'Starter' %}
+                                <span class="app-sidebar__lock" title="{{ _('Upgrade to Pro') }}">🔒</span>
+                                {% endif %}
+                            </a>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                <div class="app-sidebar__bottom">
+                    <a class="app-sidebar__item{% if request.endpoint == 'history.history_list' %} app-sidebar__item--active{% endif %}" href="{{ url_for('history.history_list') }}">
+                        <i class="bi bi-clock-history"></i>
+                        <span>{{ _('History') }}</span>
+                    </a>
+                    <a class="app-sidebar__item{% if request.endpoint == 'history.saved_list' %} app-sidebar__item--active{% endif %}" href="{{ url_for('history.saved_list') }}">
+                        <i class="bi bi-bookmark-star"></i>
+                        <span>{{ _('Saved Results') }}</span>
+                    </a>
+                    <a class="app-sidebar__item{% if request.endpoint == 'billing.pricing' %} app-sidebar__item--active{% endif %}" href="{{ url_for('billing.pricing') }}">
+                        <i class="bi bi-credit-card"></i>
+                        <span>{{ _('Account & Billing') }}</span>
+                    </a>
+                    <a class="app-sidebar__item{% if request.endpoint == 'users.settings' %} app-sidebar__item--active{% endif %}" href="{{ url_for('users.settings') }}">
+                        <i class="bi bi-person-gear"></i>
+                        <span>{{ _('Settings') }}</span>
+                    </a>
+                    {% if current_user.is_admin %}
+                    <a class="app-sidebar__item app-sidebar__item--admin{% if request.endpoint == 'admin.admin_dashboard' %} app-sidebar__item--active{% endif %}" href="{{ url_for('admin.admin_dashboard') }}">
+                        <i class="bi bi-gear"></i>
+                        <span>{{ _('Admin Panel') }}</span>
+                    </a>
+                    {% endif %}
+                    <div class="app-sidebar__credits">
+                        <i class="bi bi-coin"></i>
+                        <span>{{ _('Credits') }}: <strong>{{ current_user.credits }}</strong></span>
+                    </div>
+                </div>
+            </nav>
+        </aside>
+        <!-- Mobile Sidebar (Hamburger / Offcanvas) -->
+        <div class="offcanvas offcanvas-start d-lg-none app-sidebar-offcanvas app-sidebar--ultimate" id="sidebarOffcanvas" tabindex="-1" aria-labelledby="sidebarOffcanvasLabel">
+            <div class="offcanvas-header app-sidebar__header">
+                <h5 class="offcanvas-title" id="sidebarOffcanvasLabel">{{ _('Menu') }}</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="{{ _('Close') }}"></button>
+            </div>
+            <div class="offcanvas-body p-0">
+                <nav class="app-sidebar__nav">
+                    <a class="app-sidebar__item{% if request.endpoint == 'ai.dashboard' %} app-sidebar__item--active{% endif %}" href="{{ url_for('ai.dashboard') }}" data-bs-dismiss="offcanvas">
+                        <i class="bi bi-house-door"></i>
+                        <span>{{ _('Dashboard') }}</span>
+                    </a>
+                    <div id="sidebarAccordionMobile" class="app-sidebar__accordion">
+                        <div class="app-sidebar__group">
+                            <button type="button" class="app-sidebar__group-title" data-bs-toggle="collapse" data-bs-target="#sidebarProCollapseMobile" data-bs-parent="#sidebarAccordionMobile" aria-expanded="false" aria-controls="sidebarProCollapseMobile">
+                                <i class="bi bi-briefcase"></i>
+                                <span>{{ _('Professional Suite') }}</span>
+                                <i class="bi bi-chevron-down app-sidebar__chevron"></i>
+                            </button>
+                            <div class="collapse" id="sidebarProCollapseMobile">
+                                {% for tool in sidebar_professional_tools %}
+                                <a class="app-sidebar__subitem app-sidebar__subitem--professional{% if request.endpoint == 'ai.tool_page' and request.view_args and request.view_args.get('tool_name') == tool.tool_name %} app-sidebar__subitem--active{% endif %}" href="{{ url_for('ai.tool_page', tool_name=tool.tool_name) }}" data-bs-dismiss="offcanvas">
+                                    <span class="app-sidebar__tool-icon">{{ tool.icon }}</span>
+                                    <span>{{ tool.name }}</span>
+                                </a>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        <div class="app-sidebar__group">
+                            <button type="button" class="app-sidebar__group-title" data-bs-toggle="collapse" data-bs-target="#sidebarCreativeCollapseMobile" data-bs-parent="#sidebarAccordionMobile" aria-expanded="false" aria-controls="sidebarCreativeCollapseMobile">
+                                <i class="bi bi-palette"></i>
+                                <span>{{ _('Creative Studio') }}</span>
+                                <i class="bi bi-chevron-down app-sidebar__chevron"></i>
+                            </button>
+                            <div class="collapse" id="sidebarCreativeCollapseMobile">
+                                {% for tool in sidebar_creative_tools %}
+                                <a class="app-sidebar__subitem app-sidebar__subitem--creative{% if request.endpoint == 'ai.tool_page' and request.view_args and request.view_args.get('tool_name') == tool.tool_name %} app-sidebar__subitem--active{% endif %}" href="{{ url_for('ai.tool_page', tool_name=tool.tool_name) if user_package != 'Starter' else url_for('billing.pricing') }}" data-bs-dismiss="offcanvas">
+                                    <span class="app-sidebar__tool-icon">{{ tool.icon }}</span>
+                                    <span>{{ tool.name }}</span>
+                                    {% if user_package == 'Starter' %}
+                                    <span class="app-sidebar__lock">🔒</span>
+                                    {% endif %}
+                                </a>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="app-sidebar__bottom">
+                        <a class="app-sidebar__item{% if request.endpoint == 'history.history_list' %} app-sidebar__item--active{% endif %}" href="{{ url_for('history.history_list') }}" data-bs-dismiss="offcanvas">
+                            <i class="bi bi-clock-history"></i>
+                            <span>{{ _('History') }}</span>
+                        </a>
+                        <a class="app-sidebar__item{% if request.endpoint == 'history.saved_list' %} app-sidebar__item--active{% endif %}" href="{{ url_for('history.saved_list') }}" data-bs-dismiss="offcanvas">
+                            <i class="bi bi-bookmark-star"></i>
+                            <span>{{ _('Saved Results') }}</span>
+                        </a>
+                        <a class="app-sidebar__item{% if request.endpoint == 'billing.pricing' %} app-sidebar__item--active{% endif %}" href="{{ url_for('billing.pricing') }}" data-bs-dismiss="offcanvas">
+                            <i class="bi bi-credit-card"></i>
+                            <span>{{ _('Account & Billing') }}</span>
+                        </a>
+                        <a class="app-sidebar__item{% if request.endpoint == 'users.settings' %} app-sidebar__item--active{% endif %}" href="{{ url_for('users.settings') }}" data-bs-dismiss="offcanvas">
+                            <i class="bi bi-person-gear"></i>
+                            <span>{{ _('Settings') }}</span>
+                        </a>
+                        {% if current_user.is_admin %}
+                        <a class="app-sidebar__item app-sidebar__item--admin{% if request.endpoint == 'admin.admin_dashboard' %} app-sidebar__item--active{% endif %}" href="{{ url_for('admin.admin_dashboard') }}" data-bs-dismiss="offcanvas">
+                            <i class="bi bi-gear"></i>
+                            <span>{{ _('Admin Panel') }}</span>
+                        </a>
+                        {% endif %}
+                        <div class="app-sidebar__credits">
+                            <i class="bi bi-coin"></i>
+                            <span>{{ _('Credits') }}: <strong>{{ current_user.credits }}</strong></span>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
+        {% endif %}
+
+        <!-- Main Content (Phase B: consistent wrapper) -->
+        <main class="app-main">
+            <div class="container app-main__content">
+                {% block content %}{% endblock %}
+            </div>
+        </main>
+    </div>
+
+    <!-- Footer (theme-aware: uses --footer-bg / --footer-text) -->
+    <footer class="app-footer py-4 mt-5">
+        <div class="container text-center">
+            <p class="mb-0">&copy; {{ current_year }} <span class="brand font-brand font-brand--footer"><span class="brand-word">Mindixo</span><span class="brand-accent ai-accent">AI</span></span>. {% block footer_text %}{{ _('All rights reserved') }}{% endblock %}</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap 5 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    {% block scripts %}{% endblock %}
+    
+    <!-- Theme Toggle Script (Protected) -->
+    <script>
+    (function() {
+        'use strict';
+        // Initialize theme from localStorage
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        document.body.setAttribute('data-bs-theme', savedTheme);
+        updateThemeIcon(savedTheme);
+        
+        // Theme toggle button
+        const themeToggle = document.getElementById('themeToggle');
+        if (themeToggle) {
+            themeToggle.addEventListener('click', function() {
+                const currentTheme = document.body.getAttribute('data-bs-theme');
+                const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+                document.body.setAttribute('data-bs-theme', newTheme);
+                localStorage.setItem('theme', newTheme);
+                updateThemeIcon(newTheme);
+            });
+        }
+        
+        function updateThemeIcon(theme) {
+            const themeIcon = document.getElementById('themeIcon');
+            if (themeIcon) {
+                if (theme === 'dark') {
+                    themeIcon.className = 'bi bi-sun';
+                } else {
+                    themeIcon.className = 'bi bi-moon-stars';
+                }
+            }
+        }
+    })();
+    </script>
+</body>
+</html>
+

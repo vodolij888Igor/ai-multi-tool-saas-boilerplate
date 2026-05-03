@@ -1,0 +1,98 @@
+{% extends "base.html" %}
+
+{% block title %}{{ seo.title if seo and seo.title else (tool.name if tool else 'AI Tool') }}{% endblock %}
+{% block meta_description %}{{ seo.description if seo and seo.description else (tool.description if tool else 'MindixoAI') }}{% endblock %}
+{% block meta_keywords %}{{ seo.keywords if seo and seo.keywords else 'AI multi tools' }}{% endblock %}
+
+{% block content %}
+<div class="tool-page">
+    <div class="tool-page__back">
+        <a href="{{ url_for('ai.dashboard') }}" class="btn btn-outline-secondary btn-sm">
+            <i class="bi bi-arrow-left" aria-hidden="true"></i> {{ _('Back to Dashboard') }}
+        </a>
+    </div>
+    <h1 class="tool-page__title">
+        {% if tool %}
+            {{ tool.name }}
+        {% else %}
+            {{ tool_name.replace('_', ' ').title() }}
+        {% endif %}
+    </h1>
+
+    <div class="card shadow-sm tool-panel">
+        <div class="card-body">
+            <label for="userInput" class="form-label visually-hidden">{{ _('Describe your task...') }}</label>
+            <textarea id="userInput" class="form-control" rows="5" placeholder="{{ _('Describe your task...') }}" aria-label="{{ _('Describe your task...') }}"></textarea>
+            <div class="tool-panel__actions">
+                <button type="button" id="generateBtn" class="btn btn-primary" onclick="generate()">
+                    <i class="bi bi-lightning-charge-fill" aria-hidden="true"></i> {{ _('Generate') }}
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div id="resultArea" class="tool-result" style="display: none;" role="region" aria-labelledby="resultHeading">
+        <h2 id="resultHeading" class="tool-result__heading">{{ _('Result:') }}</h2>
+        <div id="aiResult" class="tool-result__content"></div>
+        <div id="saveResultWrap" class="mt-2" style="display: none;">
+            <form id="saveResultForm" method="post" action="" class="d-inline">
+                <button type="submit" class="btn btn-outline-success btn-sm"><i class="bi bi-bookmark"></i> {{ _('Save result') }}</button>
+            </form>
+        </div>
+    </div>
+
+    {% if tool and tool.tool_long_description %}
+    <section class="tool-about" aria-labelledby="aboutHeading">
+        <div class="card shadow-sm">
+            <div class="card-body">
+                <h2 id="aboutHeading" class="h5 mb-3">{{ _('About This Tool') }}</h2>
+                <div class="tool-long-description">
+                    {{ tool.tool_long_description }}
+                </div>
+            </div>
+        </div>
+    </section>
+    {% endif %}
+</div>
+
+<script>
+const I18N = {
+    generate: "{{ _('Generate') }}",
+    generating: "{{ _('Generating...') }}",
+    errorPrefix: "{{ _('Error:') }}"
+};
+const generateBtnIcon = '<i class="bi bi-lightning-charge-fill" aria-hidden="true"></i> ';
+async function generate() {
+    const prompt = document.getElementById('userInput').value;
+    const toolName = "{% if tool %}{{ tool.tool_name }}{% else %}{{ tool_name }}{% endif %}";
+    const btn = document.getElementById('generateBtn');
+    
+    btn.disabled = true;
+    btn.innerHTML = '<span class="spinner-border spinner-border-sm me-2" aria-hidden="true"></span>' + I18N.generating;
+    
+    const response = await fetch('/api/generate', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({ prompt: prompt, tool_name: toolName })
+    });
+    
+    const data = await response.json();
+    
+    if (data.result) {
+        document.getElementById('resultArea').style.display = 'block';
+        document.getElementById('aiResult').innerText = data.result;
+        if (data.generation_id) {
+            const saveWrap = document.getElementById('saveResultWrap');
+            const saveForm = document.getElementById('saveResultForm');
+            saveForm.action = '/history/' + data.generation_id + '/save';
+            saveWrap.style.display = 'block';
+        }
+    } else {
+        alert(I18N.errorPrefix + ' ' + (data.error || ''));
+    }
+    
+    btn.disabled = false;
+    btn.innerHTML = generateBtnIcon + I18N.generate;
+}
+</script>
+{% endblock %}

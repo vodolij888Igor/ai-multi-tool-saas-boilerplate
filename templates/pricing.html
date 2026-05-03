@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+
+{% block title %}{{ _('Pricing Plans') }} — MindixoAI{% endblock %}
+{% block meta_description %}{{ _('Pricing Plans') }} — {{ _('Starter') }}, {{ _('Pro') }} & {{ _('Business') }}. {{ _('10 Free Credits') }}, {{ _('Professional Tools') }}, {{ _('Unlimited Access') }}.{% endblock %}
+
+{% block content %}
+<div class="pricing-page">
+    <div class="pricing-page__header text-center mb-5">
+        <h1 class="pricing-page__title">{{ _('Pricing Plans') }}</h1>
+        <p class="pricing-page__lead text-muted">{{ _('Choose the plan that fits your needs. Start free, scale when you are ready.') }}</p>
+    </div>
+
+    <div class="row g-4 justify-content-center align-items-stretch">
+        <!-- Starter -->
+        <div class="col-12 col-md-6 col-lg-4">
+            <div class="card h-100 shadow-sm pricing-card">
+                <div class="card-body d-flex flex-column">
+                    <h2 class="h5 card-title pricing-card__title">{{ _('Starter') }}</h2>
+                    <div class="pricing-card__price mb-3">
+                        <span class="pricing-card__amount">$0</span>
+                        <span class="text-muted">/ {{ _('month') }}</span>
+                    </div>
+                    <ul class="list-unstyled mb-4 flex-grow-1">
+                        <li class="pricing-card__feature"><i class="bi bi-check-circle-fill text-success me-2" aria-hidden="true"></i>{{ _('10 Free Credits') }}</li>
+                        <li class="pricing-card__feature"><i class="bi bi-check-circle-fill text-success me-2" aria-hidden="true"></i>{{ _('Basic AI Access') }}</li>
+                    </ul>
+                    <a href="{{ url_for('auth.register') }}" class="btn btn-outline-primary w-100 mt-auto">{{ _('Get started') }}</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pro (highlighted) -->
+        <div class="col-12 col-md-6 col-lg-4">
+            <div class="card h-100 shadow pricing-card pricing-card--popular">
+                <div class="position-absolute top-0 start-50 translate-middle">
+                    <span class="badge bg-primary rounded-pill px-3 py-2">{{ _('Popular') }}</span>
+                </div>
+                <div class="card-body d-flex flex-column pt-5">
+                    <h2 class="h5 card-title pricing-card__title">{{ _('Pro') }}</h2>
+                    <div class="pricing-card__price mb-3">
+                        <span class="pricing-card__amount">$19</span>
+                        <span class="text-muted">/ {{ _('month') }}</span>
+                    </div>
+                    <ul class="list-unstyled mb-4 flex-grow-1">
+                        <li class="pricing-card__feature"><i class="bi bi-check-circle-fill text-success me-2" aria-hidden="true"></i>{{ _('500 Credits') }} / {{ _('month') }}</li>
+                        <li class="pricing-card__feature"><i class="bi bi-check-circle-fill text-success me-2" aria-hidden="true"></i>{{ _('Professional Tools') }}</li>
+                    </ul>
+                    <a href="{{ url_for('billing.create_checkout_session', plan_type='pro') }}" class="btn btn-primary w-100 mt-auto">{{ _('Buy Now') }}</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Business -->
+        <div class="col-12 col-md-6 col-lg-4">
+            <div class="card h-100 shadow-sm pricing-card">
+                <div class="card-body d-flex flex-column">
+                    <h2 class="h5 card-title pricing-card__title">{{ _('Business') }}</h2>
+                    <div class="pricing-card__price mb-3">
+                        <span class="pricing-card__amount">$49</span>
+                        <span class="text-muted">/ {{ _('month') }}</span>
+                    </div>
+                    <ul class="list-unstyled mb-4 flex-grow-1">
+                        <li class="pricing-card__feature"><i class="bi bi-check-circle-fill text-success me-2" aria-hidden="true"></i>{{ _('2000 Credits') }} / {{ _('month') }}</li>
+                        <li class="pricing-card__feature"><i class="bi bi-check-circle-fill text-success me-2" aria-hidden="true"></i>{{ _('Unlimited Access') }}</li>
+                    </ul>
+                    <a href="{{ url_for('billing.create_checkout_session', plan_type='business') }}" class="btn btn-outline-primary w-100 mt-auto">{{ _('Buy Now') }}</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <p class="pricing-page__trust text-center text-muted small mt-5 mb-0">{{ _('All plans include access to the dashboard and AI tools. Secure payment via Stripe.') }}</p>
+</div>
+{% endblock %}

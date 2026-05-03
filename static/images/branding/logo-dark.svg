@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+  <defs>
+    <linearGradient id="ribbonLd" x1="0%" y1="100%" x2="85%" y2="5%">
+      <stop offset="0%" style="stop-color:#3b82f6"/>
+      <stop offset="50%" style="stop-color:#38bdf8"/>
+      <stop offset="100%" style="stop-color:#67e8f9"/>
+    </linearGradient>
+    <linearGradient id="ribbonRd" x1="100%" y1="100%" x2="15%" y2="5%">
+      <stop offset="0%" style="stop-color:#7c3aed"/>
+      <stop offset="45%" style="stop-color:#a78bfa"/>
+      <stop offset="100%" style="stop-color:#7dd3fc"/>
+    </linearGradient>
+    <linearGradient id="crossd" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#a5f3fc"/>
+      <stop offset="100%" style="stop-color:#e9d5ff"/>
+    </linearGradient>
+  </defs>
+  <path fill="url(#ribbonLd)" d="M 10.5 41.5
+    C 8.8 41.2 7.8 39.5 8 37.8
+    C 8.5 28 10.5 17 15.5 11.2
+    C 17.8 8.5 20.5 7.2 23.2 8.2
+    C 24.2 8.6 24.8 9.4 24.6 10.5
+    C 24.2 13.5 23.4 16.8 23.3 20.5
+    C 23.2 25.5 24.2 29.8 26 32.2
+    C 23.8 34.5 18.2 36.2 14.2 38.8
+    C 12.5 40 11.2 41 10.5 41.5 Z"/>
+  <path fill="url(#ribbonRd)" d="M 37.5 41.5
+    C 39.2 41.2 40.2 39.5 40 37.8
+    C 39.5 28 37.5 17 32.5 11.2
+    C 30.2 8.5 27.5 7.2 24.8 8.2
+    C 23.8 8.6 23.2 9.4 23.4 10.5
+    C 23.8 13.5 24.6 16.8 24.7 20.5
+    C 24.8 25.5 23.8 29.8 22 32.2
+    C 24.2 34.5 29.8 36.2 33.8 38.8
+    C 35.5 40 36.8 41 37.5 41.5 Z"/>
+  <path fill="url(#crossd)" fill-opacity="0.5" d="M 24 9.2 L 26.2 12.4 L 24.1 24.6 L 21.8 12.4 Z"/>
+</svg>

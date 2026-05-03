@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+
+{% block title %}{{ _('Edit article') if article else _('Create article') }}{% endblock %}
+
+{% block content %}
+<div class="container py-4">
+    <h1 class="mb-4"><i class="bi bi-journal-text"></i> {{ _('Edit article') if article else _('Create article') }}</h1>
+
+    <form method="post" action="{{ url_for('admin.admin_blog_edit', article_id=article.id) if article else url_for('admin.admin_blog_create') }}">
+        <div class="mb-3">
+            <label for="title" class="form-label">{{ _('Title') }} *</label>
+            <input type="text" id="title" name="title" class="form-control" value="{{ article.title if article else '' }}" required>
+        </div>
+        <div class="mb-3">
+            <label for="slug" class="form-label">{{ _('Slug') }} (URL)</label>
+            <input type="text" id="slug" name="slug" class="form-control" value="{{ article.slug if article else '' }}" placeholder="auto-from-title">
+        </div>
+        <div class="mb-3">
+            <label for="excerpt" class="form-label">{{ _('Excerpt') }}</label>
+            <textarea id="excerpt" name="excerpt" class="form-control" rows="2">{{ article.excerpt if article else '' }}</textarea>
+        </div>
+        <div class="mb-3">
+            <label for="content" class="form-label">{{ _('Content') }} *</label>
+            <textarea id="content" name="content" class="form-control" rows="12" required>{{ article.content if article else '' }}</textarea>
+        </div>
+        <div class="mb-3">
+            <label for="category_id" class="form-label">{{ _('Category') }}</label>
+            <select id="category_id" name="category_id" class="form-select">
+                <option value="">—</option>
+                {% for c in categories %}
+                <option value="{{ c.id }}" {% if article and article.category_id == c.id %}selected{% endif %}>{{ c.name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="status" class="form-label">{{ _('Status') }}</label>
+            <select id="status" name="status" class="form-select">
+                <option value="draft" {% if article and article.status == 'draft' %}selected{% endif %}>{{ _('Draft') }}</option>
+                <option value="published" {% if article and article.status == 'published' %}selected{% endif %}>{{ _('Published') }}</option>
+            </select>
+        </div>
+        <div class="card mb-3">
+            <div class="card-header">{{ _('SEO') }}</div>
+            <div class="card-body">
+                <div class="mb-2">
+                    <label for="meta_title" class="form-label">{{ _('Meta title') }}</label>
+                    <input type="text" id="meta_title" name="meta_title" class="form-control" value="{{ article.meta_title if article else '' }}">
+                </div>
+                <div class="mb-2">
+                    <label for="meta_description" class="form-label">{{ _('Meta description') }}</label>
+                    <textarea id="meta_description" name="meta_description" class="form-control" rows="2">{{ article.meta_description if article else '' }}</textarea>
+                </div>
+                <div>
+                    <label for="meta_keywords" class="form-label">{{ _('Keywords') }}</label>
+                    <input type="text" id="meta_keywords" name="meta_keywords" class="form-control" value="{{ article.meta_keywords if article else '' }}">
+                </div>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary">{{ _('Save') }}</button>
+        <a href="{{ url_for('admin.admin_blog_list') }}" class="btn btn-outline-secondary">{{ _('Cancel') }}</a>
+    </form>
+</div>
+{% endblock %}

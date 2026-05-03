@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+{% block title %}{{ _('Generation History') }}{% endblock %}
+
+{% block content %}
+<div class="container py-4">
+    <h1 class="mb-4"><i class="bi bi-clock-history"></i> {{ _('Generation History') }}</h1>
+    <p class="text-muted">{{ _('All your recent generations. Save any result to Saved Results.') }}</p>
+
+    {% if items %}
+    <div class="table-responsive">
+        <table class="table table-striped table-hover align-middle">
+            <thead class="table-dark">
+                <tr>
+                    <th>{{ _('Tool') }}</th>
+                    <th>{{ _('Prompt') }}</th>
+                    <th>{{ _('Result preview') }}</th>
+                    <th>{{ _('Date') }}</th>
+                    <th>{{ _('Actions') }}</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for g in items %}
+                <tr>
+                    <td>{{ g.tool_display_name }}</td>
+                    <td><span class="text-muted small">{{ g.prompt }}</span></td>
+                    <td><span class="small">{{ g.result_preview }}</span></td>
+                    <td>{{ g.created_at.strftime('%Y-%m-%d %H:%M') if g.created_at else '—' }}</td>
+                    <td>
+                        <div class="d-flex flex-wrap gap-1 align-items-center">
+                            <a href="{{ url_for('history.history_view', gen_id=g.id) }}" class="btn btn-sm btn-outline-primary">{{ _('View') }}</a>
+                            {% if not g.saved_at %}
+                            <form action="{{ url_for('history.save_result', gen_id=g.id) }}" method="post" class="d-inline">
+                                <button type="submit" class="btn btn-sm btn-outline-success">{{ _('Save') }}</button>
+                            </form>
+                            {% else %}
+                            <span class="badge bg-success">{{ _('Saved') }}</span>
+                            {% endif %}
+                            <a href="{{ url_for('history.download_result', gen_id=g.id, format='txt') }}" class="btn btn-sm btn-outline-secondary" download>{{ _('TXT') }}</a>
+                            <a href="{{ url_for('history.download_result', gen_id=g.id, format='md') }}" class="btn btn-sm btn-outline-secondary" download>{{ _('MD') }}</a>
+                            <form action="{{ url_for('history.delete_history', gen_id=g.id) }}" method="post" class="d-inline" onsubmit="return confirm('{{ _('Delete this history item?') }}');">
+                                <button type="submit" class="btn btn-sm btn-outline-danger">{{ _('Delete') }}</button>
+                            </form>
+                        </div>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% else %}
+    <div class="alert alert-info">
+        <i class="bi bi-info-circle"></i> {{ _('No generations yet. Use any tool to generate content.') }}
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

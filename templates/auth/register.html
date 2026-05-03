@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block title %}{{ _('Sign up') }} — MindixoAI{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center py-5">
+  <div class="col-11 col-sm-10 col-md-6 col-lg-5">
+    <div class="card border-0 shadow-sm">
+      <div class="card-body p-4 p-md-5">
+        <h4 class="fw-semibold mb-1">{{ _('Create account') }}</h4>
+        <p class="text-muted small mb-4">{{ _('Register to get 10 free credits to try our AI tools.') }}</p>
+
+        <form method="post" action="{{ url_for('auth.register') }}" novalidate>
+          <div class="mb-3">
+            <label for="email" class="form-label">{{ _('Email') }}</label>
+            <input type="email" class="form-control form-control-lg" id="email" name="email"
+                   placeholder="{{ _('Email placeholder') }}" required autofocus
+                   value="{{ request.form.email or '' }}">
+          </div>
+          <div class="mb-3">
+            <label for="password" class="form-label">{{ _('Password') }}</label>
+            <input type="password" class="form-control form-control-lg" id="password" name="password"
+                   placeholder="{{ _('At least 6 characters') }}" required minlength="6">
+          </div>
+          <div class="mb-4">
+            <label for="confirm_password" class="form-label">{{ _('Confirm password') }}</label>
+            <input type="password" class="form-control form-control-lg" id="confirm_password" name="confirm_password"
+                   placeholder="{{ _('Password placeholder') }}" required minlength="6">
+          </div>
+          <button type="submit" class="btn btn-primary btn-lg w-100 mb-3">{{ _('Sign up') }}</button>
+        </form>
+
+        <p class="text-center text-muted small mb-0">
+          {{ _("Already have an account?") }}
+          <a href="{{ url_for('auth.login') }}" class="text-decoration-none fw-medium">{{ _('Log in') }}</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

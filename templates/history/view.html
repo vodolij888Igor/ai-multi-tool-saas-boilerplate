@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block title %}{{ _('Generation') }} — {{ item.tool_display_name }}{% endblock %}
+
+{% block content %}
+<div class="container py-4">
+    <div class="mb-3">
+        <a href="{{ url_for('history.history_list') }}" class="btn btn-outline-secondary btn-sm">
+            <i class="bi bi-arrow-left"></i> {{ _('Back to History') }}
+        </a>
+    </div>
+    <div class="card shadow-sm">
+        <div class="card-header d-flex justify-content-between align-items-center">
+            <span><i class="bi bi-tools"></i> {{ item.tool_display_name }}</span>
+            <span class="text-muted small">{{ item.created_at.strftime('%Y-%m-%d %H:%M') if item.created_at else '' }}</span>
+        </div>
+        <div class="card-body">
+            <h6 class="text-muted">{{ _('Prompt') }}</h6>
+            <p class="mb-4">{{ item.prompt }}</p>
+            <h6 class="text-muted">{{ _('Result') }}</h6>
+            <div class="bg-light p-3 rounded border" style="white-space: pre-wrap;">{{ item.result }}</div>
+            <div class="mt-3 d-flex flex-wrap gap-2 align-items-center">
+                {% if not item.saved_at %}
+                <form action="{{ url_for('history.save_result', gen_id=item.id) }}" method="post" class="d-inline">
+                    <button type="submit" class="btn btn-success btn-sm"><i class="bi bi-bookmark"></i> {{ _('Save to Saved Results') }}</button>
+                </form>
+                {% else %}
+                <span class="badge bg-success">{{ _('Saved') }}</span>
+                {% endif %}
+                <a href="{{ url_for('history.download_result', gen_id=item.id, format='txt') }}" class="btn btn-outline-secondary btn-sm"><i class="bi bi-download"></i> {{ _('Download') }} .txt</a>
+                <a href="{{ url_for('history.download_result', gen_id=item.id, format='md') }}" class="btn btn-outline-secondary btn-sm"><i class="bi bi-download"></i> {{ _('Download') }} .md</a>
+                <form action="{{ url_for('history.delete_history', gen_id=item.id) }}" method="post" class="d-inline" onsubmit="return confirm('{{ _('Delete this history item?') }}');">
+                    <button type="submit" class="btn btn-outline-danger btn-sm"><i class="bi bi-trash"></i> {{ _('Delete') }}</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

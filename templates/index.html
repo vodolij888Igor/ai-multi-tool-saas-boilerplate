@@ -1,0 +1,1241 @@
+{% extends "base.html" %}
+
+{% block title %}{{ seo.title if seo else 'MindixoAI - ' ~ _('Create Professional Content in Seconds') }}{% endblock %}
+{% block meta_description %}{{ seo.description if seo else _('Create professional content in seconds with AI. Amazon, Shopify, Etsy, resumes, KDP, YouTube, TikTok, and 20+ tools. Free tier available.') }}{% endblock %}
+{% block meta_keywords %}{{ seo.keywords if seo else _('AI multi tools, artificial intelligence, content creation, SEO content, Amazon, Shopify, Etsy') }}{% endblock %}
+{% block og_title %}{{ seo.title if seo else 'MindixoAI - ' ~ _('Create Professional Content in Seconds') }}{% endblock %}
+{% block og_description %}{{ seo.description if seo else _('Create professional content in seconds with AI. Free tier, Pro and Business plans. Start free.') }}{% endblock %}
+{% block twitter_title %}{{ seo.title if seo else 'MindixoAI' }}{% endblock %}
+{% block twitter_description %}{{ seo.description if seo else _('Create professional content in seconds with AI.') }}{% endblock %}
+{% block canonical_url %}{{ request.url }}{% endblock %}
+{% block og_url %}{{ request.url }}{% endblock %}
+
+{% block content %}
+<div class="dashboard-page">
+{% if current_user.is_authenticated %}
+  {% if current_user.credits > 10 and not current_user.is_subscription_active %}
+  <div class="alert alert-warning alert-dismissible fade show mb-4" role="alert">
+    <i class="bi bi-exclamation-triangle-fill me-2"></i>{{ _('Subscription inactive. Your credits are currently locked.') }}
+    <a href="{{ url_for('billing.pricing') }}" class="alert-link ms-2">{{ _('View plans') }}</a>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="{{ _('Close') }}"></button>
+  </div>
+  {% endif %}
+
+  {% if user_package == 'Starter' %}
+  <div class="dashboard-cta mb-4">
+    <div class="dashboard-cta__inner">
+      <span class="dashboard-cta__text">{{ _('Upgrade to Ultimate') }}</span>
+      <a href="{{ url_for('billing.pricing') }}" class="btn btn-sm btn-light">{{ _('View plans') }}</a>
+    </div>
+  </div>
+  {% endif %}
+
+  <section class="dashboard-hero">
+    <h1 class="dashboard-hero__title">{{ _('Welcome back') }}{% if current_user.email %}, {{ current_user.email.split('@')[0] }}{% endif %}</h1>
+    <p class="dashboard-hero__credits">
+      <i class="bi bi-coin"></i>
+      {{ _('Credits') }}: <strong>{{ current_user.credits }}</strong>
+    </p>
+  </section>
+
+  <section class="dashboard-search">
+    <label for="toolSearch" class="form-label visually-hidden">{{ _('Search tools') }}</label>
+    <div class="dashboard-search__wrap">
+      <i class="bi bi-search dashboard-search__icon"></i>
+      <input type="text" id="toolSearch" class="form-control form-control-lg dashboard-search__input" placeholder="{{ _('Search tools by name...') }}" autocomplete="off">
+      <ul id="toolSearchResults" class="dashboard-search__results list-group" aria-hidden="true"></ul>
+    </div>
+  </section>
+
+  <section class="dashboard-tools">
+    <h2 class="dashboard-tools__title">
+      {% if section_title_key == 'Recently Used' %}{{ _('Recently Used') }}{% else %}{{ _('Featured Tools') }}{% endif %}
+    </h2>
+    <div class="row g-4">
+      {% for tool in display_tools %}
+      <div class="col-md-6 col-lg-3">
+        <a href="{{ url_for('ai.tool_page', tool_name=tool.tool_name) }}" class="text-decoration-none">
+          <div class="card dashboard-tool-card h-100 shadow-sm">
+            <div class="card-body text-center">
+              <div class="dashboard-tool-card__icon">{{ tool.icon }}</div>
+              <h5 class="card-title dashboard-tool-card__title">{{ tool.name }}</h5>
+              <p class="card-text text-muted small mb-0">{{ tool.description[:80] }}{% if tool.description|length > 80 %}…{% endif %}</p>
+            </div>
+            <div class="card-footer bg-transparent border-0 pt-0">
+              <span class="badge bg-primary">{{ _('Open Tool') }} <i class="bi bi-arrow-right ms-1"></i></span>
+            </div>
+          </div>
+        </a>
+      </div>
+      {% endfor %}
+    </div>
+  </section>
+
+  <p class="text-muted small mt-4">
+    {{ _('All tools') }} → <a href="#" class="dashboard-sidebar-hint">{{ _('Use the sidebar') }}</a> {{ _('to browse Professional Suite and Creative Studio.') }}
+  </p>
+{% else %}
+  {# Public landing page #}
+  <div class="landing-page">
+    <section class="landing-hero" aria-labelledby="landing-hero-title">
+      <div class="hero-glow" aria-hidden="true"></div>
+      <div class="landing-hero__container">
+        <div class="landing-hero__brand mb-3">
+          <span class="brand-logo-wrap landing-hero__logo-wrap hero-logo">
+            <img class="brand-logo" src="{{ url_for('static', filename='images/branding/logo-source.png') }}" width="100" height="100" alt="" decoding="async">
+          </span>
+          <h1 id="landing-hero-title" class="landing-hero__title hero-title mb-0"><span class="brand font-brand"><span class="brand-word">Mindixo</span><span class="brand-accent ai-accent ai-accent--hero">AI</span></span></h1>
+        </div>
+        <p class="landing-hero__lead mb-4">
+          {{ _('Create professional content in seconds with artificial intelligence.') }}
+        </p>
+        <div class="landing-hero__actions d-flex flex-wrap gap-3 justify-content-center">
+          <a href="{{ url_for('auth.register') }}" class="btn btn-primary btn-lg px-4 landing-hero__btn-primary">
+            <i class="bi bi-rocket-takeoff me-2"></i>{{ _('Get started free') }}
+          </a>
+          <a href="{{ url_for('billing.pricing') }}" class="btn btn-outline-primary btn-lg px-4 landing-hero__btn-outline">
+            <i class="bi bi-credit-card me-2"></i>{{ _('View plans') }}
+          </a>
+          <a href="{{ url_for('blog.index') }}" class="btn btn-outline-secondary btn-lg px-4 landing-hero__btn-outline-secondary">
+            <i class="bi bi-journal-text me-2"></i>{{ _('Blog') }}
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="landing-features landing-reveal">
+      <div class="container">
+        <h2 class="landing-section-title text-center mb-5">{{ _('why') }} <span class="brand font-brand font-brand--section"><span class="brand-word">Mindixo</span><span class="brand-accent ai-accent">AI</span></span></h2>
+        <div class="row landing-features__row g-4">
+          <div class="col-md-6 col-lg-4">
+            <div class="card h-100 landing-feature-card">
+              <div class="card-body text-center">
+                <div class="card-icon" aria-hidden="true">📦</div>
+                <h3 class="card-title">{{ _('Professional Suite') }}</h3>
+                <p class="card-text mb-0">{{ _('Amazon, Shopify, Etsy, resumes, KDP, YouTube scripts, TikTok hooks, and Google Ads copy.') }}</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-4">
+            <div class="card h-100 landing-feature-card">
+              <div class="card-body text-center">
+                <div class="card-icon" aria-hidden="true">🎨</div>
+                <h3 class="card-title">{{ _('Creative Studio') }}</h3>
+                <p class="card-text mb-0">{{ _('Finance, business, marketing, tech, health, education, travel, food, fitness, beauty, real estate, psychology.') }}</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-4">
+            <div class="card h-100 landing-feature-card">
+              <div class="card-body text-center">
+                <div class="card-icon" aria-hidden="true">⚡</div>
+                <h3 class="card-title">{{ _('Fast & simple') }}</h3>
+                <p class="card-text mb-0">{{ _('Describe your task, get optimized content. Credits-based usage with flexible plans.') }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="landing-how landing-reveal" aria-labelledby="landing-how-title">
+      <div class="container landing-how__container">
+        <h2 id="landing-how-title" class="landing-section-title text-center mb-2">{{ _("how_it_works") }}</h2>
+        <p class="landing-how__subtitle text-center text-muted mb-5 mx-auto">{{ _("how_it_works_subtitle") }}</p>
+        <div class="landing-how__split">
+          <div class="landing-how__steps" id="landing-how-steps">
+            <div class="landing-how-step" data-how-demo-step="1">
+              <span class="landing-how-step__dot" aria-hidden="true"></span>
+              <p class="landing-how-step__label">{{ _("how_step_1_label") }}</p>
+              <h3 class="landing-how-step__title">{{ _("how_step_1_title") }}</h3>
+              <p class="landing-how-step__desc mb-0">{{ _("how_step_1_desc") }}</p>
+            </div>
+            <div class="landing-how-step" data-how-demo-step="2">
+              <span class="landing-how-step__dot" aria-hidden="true"></span>
+              <p class="landing-how-step__label">{{ _("how_step_2_label") }}</p>
+              <h3 class="landing-how-step__title">{{ _("how_step_2_title") }}</h3>
+              <p class="landing-how-step__desc mb-0">{{ _("how_step_2_desc") }}</p>
+            </div>
+            <div class="landing-how-step" data-how-demo-step="3">
+              <span class="landing-how-step__dot" aria-hidden="true"></span>
+              <p class="landing-how-step__label">{{ _("how_step_3_label") }}</p>
+              <h3 class="landing-how-step__title">{{ _("how_step_3_title") }}</h3>
+              <p class="landing-how-step__desc mb-0">{{ _("how_step_3_desc") }}</p>
+            </div>
+          </div>
+          <script type="application/json" id="landing-how-demo-copy">{{ {'input': _('how_demo_input'), 'output': _('how_demo_output'), 'generating': _('examples_ai_generating'), 'done': _('examples_generated_in_seconds')}|tojson }}</script>
+          <div class="landing-how-mockup" aria-hidden="true">
+            <div class="landing-how-mockup__frame landing-how-demo" id="landing-how-demo-root">
+              <div class="landing-how-mockup__chrome">
+                <span class="landing-how-mockup__dot"></span>
+                <span class="landing-how-mockup__dot"></span>
+                <span class="landing-how-mockup__dot"></span>
+                <div class="landing-how-mockup__url"></div>
+              </div>
+              <div class="landing-how-mockup__body">
+                <div class="landing-how-demo__panel landing-how-demo__panel--input">
+                  <span class="landing-how-demo__field-label">{{ _("examples_label_input") }}</span>
+                  <div class="landing-how-demo__field" id="landing-how-demo-field">
+                    <span class="landing-how-demo__typed" id="landing-how-demo-typed"></span><span class="landing-how-demo__caret" aria-hidden="true"></span>
+                  </div>
+                </div>
+                <div class="landing-how-demo__generate-row">
+                  <button type="button" class="btn btn-primary btn-sm landing-how-demo__generate" id="landing-how-demo-generate" disabled tabindex="-1">
+                    <i class="bi bi-stars" aria-hidden="true"></i> {{ _("examples_demo_generate") }}
+                  </button>
+                </div>
+                <div class="landing-how-demo__divider"></div>
+                <div class="landing-how-demo__panel landing-how-demo__panel--output">
+                  <div class="landing-how-demo__accent"></div>
+                  <div class="landing-how-demo__out-head">
+                    <span class="landing-how-demo__ai-badge" title="AI"><i class="bi bi-stars" aria-hidden="true"></i></span>
+                    <span class="landing-how-demo__field-label">{{ _("examples_label_output") }}</span>
+                    <span class="landing-how-demo__status" id="landing-how-demo-status"></span>
+                  </div>
+                  <div class="landing-how-demo__out-body">
+                    <div class="landing-how-demo__loading" id="landing-how-demo-loading" aria-hidden="true">
+                      <div class="landing-how-demo__shimmer" aria-hidden="true"></div>
+                      <span class="landing-how-demo__loading-label">{{ _("examples_demo_loading") }}</span>
+                    </div>
+                    <p class="landing-how-demo__result mb-0" id="landing-how-demo-result"></p>
+                  </div>
+                  <div class="landing-how-demo__mini-toolbar">
+                    <span class="landing-how-demo__chip"><i class="bi bi-clipboard" aria-hidden="true"></i></span>
+                    <span class="landing-how-demo__chip"><i class="bi bi-pencil" aria-hidden="true"></i></span>
+                    <span class="landing-how-demo__chip landing-how-demo__chip--accent"><i class="bi bi-arrow-up-right" aria-hidden="true"></i></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="text-center landing-how__cta">
+          <a href="{{ url_for('auth.register') }}" class="btn btn-primary btn-lg px-5">{{ _("try_mindixo_ai") }}</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="landing-examples landing-reveal" aria-labelledby="landing-examples-title">
+      <div class="container landing-examples__container">
+        <h2 id="landing-examples-title" class="landing-section-title text-center mb-2">{{ _("examples_title") }}</h2>
+        <p class="landing-examples__subtitle text-center text-muted mb-4 mb-lg-5 mx-auto">{{ _("examples_subtitle") }}</p>
+
+        <ul class="nav nav-pills landing-examples__tabs justify-content-center gap-2 mb-4" id="landing-examples-tab" role="tablist">
+          <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="examples-tab-blog" data-bs-toggle="tab" data-bs-target="#examples-pane-blog" type="button" role="tab" aria-controls="examples-pane-blog" aria-selected="true">{{ _("examples_tab_blog") }}</button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="examples-tab-product" data-bs-toggle="tab" data-bs-target="#examples-pane-product" type="button" role="tab" aria-controls="examples-pane-product" aria-selected="false">{{ _("examples_tab_product") }}</button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="examples-tab-ads" data-bs-toggle="tab" data-bs-target="#examples-pane-ads" type="button" role="tab" aria-controls="examples-pane-ads" aria-selected="false">{{ _("examples_tab_ads") }}</button>
+          </li>
+        </ul>
+
+        <script type="application/json" id="examples-demo-scenarios">
+{{ {'blog': {'input': _('examples_blog_input'), 'output': _('examples_blog_output')}, 'product': {'input': _('examples_product_input'), 'output': _('examples_product_output')}, 'ads': {'input': _('examples_ads_input'), 'output': _('examples_ads_output')}} | tojson }}
+        </script>
+        <div class="tab-content landing-examples__panels" id="landing-examples-tab-content">
+          <div class="tab-pane fade show active" id="examples-pane-blog" role="tabpanel" aria-labelledby="examples-tab-blog" tabindex="0" data-demo-scenario="blog">
+            <div class="landing-examples-pair landing-examples-pair--content landing-examples-pair--demo">
+              <div class="landing-examples__input landing-examples__input--demo">
+                <span class="landing-examples__label">{{ _("examples_label_input") }}</span>
+                <div class="landing-examples__input-field" aria-hidden="true">
+                  <span class="landing-examples__typed-text" id="examples-typed-blog"></span><span class="landing-examples__field-caret" aria-hidden="true"></span>
+                </div>
+              </div>
+              <div class="landing-examples__generate-row">
+                <button type="button" class="btn btn-primary btn-sm landing-examples__generate-btn" id="examples-gen-blog" disabled data-demo-scenario="blog">
+                  <i class="bi bi-stars" aria-hidden="true"></i> {{ _("examples_demo_generate") }}
+                </button>
+              </div>
+              <div class="landing-examples__output">
+                <div class="landing-examples__output-head">
+                  <div class="landing-examples__output-title">
+                    <span class="landing-examples__ai-badge" title="AI" aria-label="AI"><i class="bi bi-stars" aria-hidden="true"></i></span>
+                    <span class="landing-examples__label">{{ _("examples_label_output") }}</span>
+                  </div>
+                  <span class="landing-examples__generated" aria-live="polite"></span>
+                </div>
+                <div class="landing-examples__output-main">
+                  <div class="landing-examples__output-loading" id="examples-loading-blog" aria-hidden="true">
+                    <div class="landing-examples__spinner" aria-hidden="true"></div>
+                    <span class="landing-examples__loading-label">{{ _("examples_demo_loading") }}</span>
+                  </div>
+                  <p class="landing-examples__output-text landing-examples__output-text--live mb-0" id="examples-display-blog" data-demo-key="blog" aria-live="polite"></p>
+                </div>
+                <div class="landing-examples__actions" role="toolbar" aria-label="{{ _('examples_actions_toolbar') }}">
+                  <button type="button" class="landing-examples__action" data-demo-action="copy" data-demo-target="examples-display-blog">
+                    <i class="bi bi-clipboard" aria-hidden="true"></i><span class="landing-examples__action-text">{{ _("examples_action_copy") }}</span>
+                  </button>
+                  <button type="button" class="landing-examples__action" data-demo-action="edit" data-demo-target="examples-display-blog">
+                    <i class="bi bi-pencil" aria-hidden="true"></i><span class="landing-examples__action-label">{{ _("examples_action_edit") }}</span>
+                  </button>
+                  <a href="{{ url_for('auth.register') }}" class="landing-examples__action landing-examples__action--primary">
+                    <i class="bi bi-check2-circle" aria-hidden="true"></i><span>{{ _("examples_action_use") }}</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="tab-pane fade" id="examples-pane-product" role="tabpanel" aria-labelledby="examples-tab-product" tabindex="0" data-demo-scenario="product">
+            <div class="landing-examples-pair landing-examples-pair--content landing-examples-pair--demo">
+              <div class="landing-examples__input landing-examples__input--demo">
+                <span class="landing-examples__label">{{ _("examples_label_input") }}</span>
+                <div class="landing-examples__input-field" aria-hidden="true">
+                  <span class="landing-examples__typed-text" id="examples-typed-product"></span><span class="landing-examples__field-caret" aria-hidden="true"></span>
+                </div>
+              </div>
+              <div class="landing-examples__generate-row">
+                <button type="button" class="btn btn-primary btn-sm landing-examples__generate-btn" id="examples-gen-product" disabled data-demo-scenario="product">
+                  <i class="bi bi-stars" aria-hidden="true"></i> {{ _("examples_demo_generate") }}
+                </button>
+              </div>
+              <div class="landing-examples__output">
+                <div class="landing-examples__output-head">
+                  <div class="landing-examples__output-title">
+                    <span class="landing-examples__ai-badge" title="AI" aria-label="AI"><i class="bi bi-stars" aria-hidden="true"></i></span>
+                    <span class="landing-examples__label">{{ _("examples_label_output") }}</span>
+                  </div>
+                  <span class="landing-examples__generated" aria-live="polite"></span>
+                </div>
+                <div class="landing-examples__output-main">
+                  <div class="landing-examples__output-loading" id="examples-loading-product" aria-hidden="true">
+                    <div class="landing-examples__spinner" aria-hidden="true"></div>
+                    <span class="landing-examples__loading-label">{{ _("examples_demo_loading") }}</span>
+                  </div>
+                  <p class="landing-examples__output-text landing-examples__output-text--live mb-0" id="examples-display-product" data-demo-key="product" aria-live="polite"></p>
+                </div>
+                <div class="landing-examples__actions" role="toolbar" aria-label="{{ _('examples_actions_toolbar') }}">
+                  <button type="button" class="landing-examples__action" data-demo-action="copy" data-demo-target="examples-display-product">
+                    <i class="bi bi-clipboard" aria-hidden="true"></i><span class="landing-examples__action-text">{{ _("examples_action_copy") }}</span>
+                  </button>
+                  <button type="button" class="landing-examples__action" data-demo-action="edit" data-demo-target="examples-display-product">
+                    <i class="bi bi-pencil" aria-hidden="true"></i><span class="landing-examples__action-label">{{ _("examples_action_edit") }}</span>
+                  </button>
+                  <a href="{{ url_for('auth.register') }}" class="landing-examples__action landing-examples__action--primary">
+                    <i class="bi bi-check2-circle" aria-hidden="true"></i><span>{{ _("examples_action_use") }}</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="tab-pane fade" id="examples-pane-ads" role="tabpanel" aria-labelledby="examples-tab-ads" tabindex="0" data-demo-scenario="ads">
+            <div class="landing-examples-pair landing-examples-pair--content landing-examples-pair--demo">
+              <div class="landing-examples__input landing-examples__input--demo">
+                <span class="landing-examples__label">{{ _("examples_label_input") }}</span>
+                <div class="landing-examples__input-field" aria-hidden="true">
+                  <span class="landing-examples__typed-text" id="examples-typed-ads"></span><span class="landing-examples__field-caret" aria-hidden="true"></span>
+                </div>
+              </div>
+              <div class="landing-examples__generate-row">
+                <button type="button" class="btn btn-primary btn-sm landing-examples__generate-btn" id="examples-gen-ads" disabled data-demo-scenario="ads">
+                  <i class="bi bi-stars" aria-hidden="true"></i> {{ _("examples_demo_generate") }}
+                </button>
+              </div>
+              <div class="landing-examples__output">
+                <div class="landing-examples__output-head">
+                  <div class="landing-examples__output-title">
+                    <span class="landing-examples__ai-badge" title="AI" aria-label="AI"><i class="bi bi-stars" aria-hidden="true"></i></span>
+                    <span class="landing-examples__label">{{ _("examples_label_output") }}</span>
+                  </div>
+                  <span class="landing-examples__generated" aria-live="polite"></span>
+                </div>
+                <div class="landing-examples__output-main">
+                  <div class="landing-examples__output-loading" id="examples-loading-ads" aria-hidden="true">
+                    <div class="landing-examples__spinner" aria-hidden="true"></div>
+                    <span class="landing-examples__loading-label">{{ _("examples_demo_loading") }}</span>
+                  </div>
+                  <p class="landing-examples__output-text landing-examples__output-text--live mb-0" id="examples-display-ads" data-demo-key="ads" aria-live="polite"></p>
+                </div>
+                <div class="landing-examples__actions" role="toolbar" aria-label="{{ _('examples_actions_toolbar') }}">
+                  <button type="button" class="landing-examples__action" data-demo-action="copy" data-demo-target="examples-display-ads">
+                    <i class="bi bi-clipboard" aria-hidden="true"></i><span class="landing-examples__action-text">{{ _("examples_action_copy") }}</span>
+                  </button>
+                  <button type="button" class="landing-examples__action" data-demo-action="edit" data-demo-target="examples-display-ads">
+                    <i class="bi bi-pencil" aria-hidden="true"></i><span class="landing-examples__action-label">{{ _("examples_action_edit") }}</span>
+                  </button>
+                  <a href="{{ url_for('auth.register') }}" class="landing-examples__action landing-examples__action--primary">
+                    <i class="bi bi-check2-circle" aria-hidden="true"></i><span>{{ _("examples_action_use") }}</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="text-center landing-examples__cta">
+          <a href="{{ url_for('auth.register') }}" class="btn btn-primary btn-lg px-5">{{ _("examples_cta_primary") }}</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="landing-pricing bg-light landing-reveal">
+      <div class="container">
+        <div class="landing-pricing__inner">
+          <h2 class="landing-section-title text-center mb-2">{{ _('Simple pricing') }}</h2>
+          <p class="landing-pricing__lead text-center text-muted mb-5 mx-auto">{{ _('Choose a plan and scale when you need more.') }}</p>
+          <div class="row landing-pricing__row g-4 justify-content-center align-items-stretch">
+            <!-- Free -->
+            <div class="col-12 col-md-6 col-lg-4">
+              <div class="card h-100 pricing-card d-flex flex-column">
+                <div class="card-body pricing-card__body d-flex flex-column text-center">
+                  <h3 class="pricing-card__name">{{ _('Free') }}</h3>
+                  <div class="pricing-card__price-row mb-3">
+                    <span class="price">$0</span><span class="pricing-card__period">/{{ _('month') }}</span>
+                  </div>
+                  <ul class="list-unstyled pricing-card__features text-start flex-grow-1 mb-4">
+                    <li><i class="bi bi-check-lg pricing-card__check" aria-hidden="true"></i>{{ _('5 credits per day') }}</li>
+                    <li><i class="bi bi-check-lg pricing-card__check" aria-hidden="true"></i>{{ _('Basic tools') }}</li>
+                    <li><i class="bi bi-check-lg pricing-card__check" aria-hidden="true"></i>{{ _('Limited features') }}</li>
+                  </ul>
+                  <a href="{{ url_for('auth.register') }}" class="btn btn-secondary w-100 mt-auto">{{ _('Get started') }}</a>
+                </div>
+              </div>
+            </div>
+            <!-- Pro (highlighted) -->
+            <div class="col-12 col-md-6 col-lg-4">
+              <div class="card h-100 pricing-card pro d-flex flex-column">
+                <div class="pricing-card__badge">{{ _('Most popular') }}</div>
+                <div class="card-body pricing-card__body d-flex flex-column text-center">
+                  <h3 class="pricing-card__name">{{ _('Pro') }}</h3>
+                  <div class="pricing-card__price-row mb-3">
+                    <span class="price">$9</span><span class="pricing-card__period">/{{ _('month') }}</span>
+                  </div>
+                  <ul class="list-unstyled pricing-card__features text-start flex-grow-1 mb-4">
+                    <li><i class="bi bi-check-lg pricing-card__check" aria-hidden="true"></i>{{ _('100 credits per month') }}</li>
+                    <li><i class="bi bi-check-lg pricing-card__check" aria-hidden="true"></i>{{ _('All tools') }}</li>
+                    <li><i class="bi bi-check-lg pricing-card__check" aria-hidden="true"></i>{{ _('Priority processing') }}</li>
+                  </ul>
+                  <a href="{{ url_for('billing.create_checkout_session', plan_type='pro') }}" class="btn btn-primary w-100 mt-auto">{{ _('Buy Now') }}</a>
+                </div>
+              </div>
+            </div>
+            <!-- Business -->
+            <div class="col-12 col-md-6 col-lg-4">
+              <div class="card h-100 pricing-card d-flex flex-column">
+                <div class="card-body pricing-card__body d-flex flex-column text-center">
+                  <h3 class="pricing-card__name">{{ _('Business') }}</h3>
+                  <div class="pricing-card__price-row mb-3">
+                    <span class="price">$29</span><span class="pricing-card__period">/{{ _('month') }}</span>
+                  </div>
+                  <ul class="list-unstyled pricing-card__features text-start flex-grow-1 mb-4">
+                    <li><i class="bi bi-check-lg pricing-card__check" aria-hidden="true"></i>{{ _('Unlimited credits') }}</li>
+                    <li><i class="bi bi-check-lg pricing-card__check" aria-hidden="true"></i>{{ _('API access') }}</li>
+                    <li><i class="bi bi-check-lg pricing-card__check" aria-hidden="true"></i>{{ _('Advanced analytics') }}</li>
+                  </ul>
+                  <a href="{{ url_for('billing.create_checkout_session', plan_type='business') }}" class="btn btn-outline-primary w-100 mt-auto">{{ _('Buy Now') }}</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="landing-cta py-5 landing-reveal">
+      <div class="container text-center">
+        <h2 class="landing-section-title mb-3">{{ _('Ready to create?') }}</h2>
+        <p class="text-muted mb-4">{{ _('Sign up in seconds. No credit card required for the free plan.') }}</p>
+        <a href="{{ url_for('auth.register') }}" class="btn btn-primary btn-lg me-2 mb-2">
+          <i class="bi bi-person-plus me-2"></i>{{ _('Register') }}
+        </a>
+        <a href="{{ url_for('auth.login') }}" class="btn btn-outline-primary btn-lg mb-2">
+          <i class="bi bi-box-arrow-in-right me-2"></i>{{ _('Log in') }}
+        </a>
+      </div>
+    </section>
+  </div>
+{% endif %}
+</div>
+{% endblock %}
+
+{% block scripts %}
+{% if not current_user.is_authenticated %}
+<script>
+(function() {
+  var section = document.querySelector('.landing-examples');
+  if (!section) return;
+
+  var actionLabels = {
+    copy: {{ _("examples_action_copy")|tojson }},
+    copied: {{ _("examples_action_copied")|tojson }},
+    edit: {{ _("examples_action_edit")|tojson }},
+    done: {{ _("examples_action_done")|tojson }}
+  };
+
+  var copyTimers = {};
+
+  function closeEdit(outEl) {
+    if (!outEl) return;
+    outEl.removeAttribute('contenteditable');
+    outEl.classList.remove('landing-examples__output-text--editing');
+    var id = outEl.id;
+    var btn = section.querySelector('[data-demo-action="edit"][data-demo-target="' + id + '"]');
+    if (btn) {
+      btn.classList.remove('is-editing');
+      var lab = btn.querySelector('.landing-examples__action-label');
+      if (lab) lab.textContent = actionLabels.edit;
+      var icon = btn.querySelector('i');
+      if (icon) icon.className = 'bi bi-pencil';
+    }
+  }
+
+  section.addEventListener('click', function(e) {
+    var target = e.target.closest('[data-demo-action]');
+    if (!target) return;
+    var action = target.getAttribute('data-demo-action');
+    var id = target.getAttribute('data-demo-target');
+    var outEl = id ? document.getElementById(id) : null;
+    if (!outEl) return;
+
+    if (action === 'copy') {
+      var textSpan = target.querySelector('.landing-examples__action-text');
+      var t = copyTimers[id];
+      if (t) clearTimeout(t);
+      var text = outEl.textContent || '';
+      function fallbackCopy(str) {
+        var ta = document.createElement('textarea');
+        ta.value = str;
+        ta.setAttribute('readonly', '');
+        ta.style.position = 'absolute';
+        ta.style.left = '-9999px';
+        document.body.appendChild(ta);
+        ta.select();
+        try {
+          document.execCommand('copy');
+        } catch (err) {}
+        document.body.removeChild(ta);
+      }
+      function showCopied() {
+        if (!textSpan) return;
+        textSpan.textContent = actionLabels.copied;
+        if (copyTimers[id]) clearTimeout(copyTimers[id]);
+        copyTimers[id] = setTimeout(function() {
+          textSpan.textContent = actionLabels.copy;
+          copyTimers[id] = null;
+        }, 1600);
+      }
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(showCopied).catch(function() {
+          fallbackCopy(text);
+          showCopied();
+        });
+      } else {
+        fallbackCopy(text);
+        showCopied();
+      }
+      return;
+    }
+
+    if (action === 'edit') {
+      if (outEl.getAttribute('aria-busy') === 'true') return;
+      var editing = outEl.classList.contains('landing-examples__output-text--editing');
+      if (!editing) {
+        outEl.setAttribute('contenteditable', 'true');
+        outEl.classList.add('landing-examples__output-text--editing');
+        target.classList.add('is-editing');
+        var lab = target.querySelector('.landing-examples__action-label');
+        if (lab) lab.textContent = actionLabels.done;
+        var icon = target.querySelector('i');
+        if (icon) icon.className = 'bi bi-check-lg';
+        outEl.focus();
+        var range = document.createRange();
+        range.selectNodeContents(outEl);
+        range.collapse(false);
+        var sel = window.getSelection();
+        sel.removeAllRanges();
+        sel.addRange(range);
+      } else {
+        closeEdit(outEl);
+      }
+    }
+  });
+
+  document.addEventListener('keydown', function(e) {
+    if (e.key !== 'Escape') return;
+    var ed = section.querySelector('.landing-examples__output-text--editing');
+    if (ed) closeEdit(ed);
+  });
+
+  var tabList = document.getElementById('landing-examples-tab');
+  var tabContent = document.getElementById('landing-examples-tab-content');
+  var scenariosEl = document.getElementById('examples-demo-scenarios');
+  if (!tabList || !tabContent || typeof bootstrap === 'undefined' || !scenariosEl) return;
+
+  var scenarios;
+  try {
+    scenarios = JSON.parse(scenariosEl.textContent.trim());
+  } catch (err) {
+    return;
+  }
+
+  var statusLabels = {
+    generating: {{ _("examples_ai_generating")|tojson }},
+    done: {{ _("examples_generated_in_seconds")|tojson }}
+  };
+
+  var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var scenarioKeys = ['blog', 'product', 'ads'];
+  var tabBtnByKey = { blog: 'examples-tab-blog', product: 'examples-tab-product', ads: 'examples-tab-ads' };
+  var paneByKey = { blog: 'examples-pane-blog', product: 'examples-pane-product', ads: 'examples-pane-ads' };
+
+  var demoRunId = 0;
+  var skipNextUserTabEvent = false;
+  var demoLoopTimer = null;
+  var demoVisible = false;
+
+  function getOutputWrap(outEl) {
+    return outEl && outEl.closest('.landing-examples__output');
+  }
+
+  function setDemoStatus(outEl, text) {
+    var wrap = getOutputWrap(outEl);
+    if (!wrap) return;
+    var s = wrap.querySelector('.landing-examples__generated');
+    if (s) s.textContent = text;
+  }
+
+  function setDemoOutputMode(outEl, mode) {
+    var wrap = getOutputWrap(outEl);
+    if (!wrap) return;
+    wrap.classList.remove('is-generating', 'is-typing', 'is-complete');
+    if (mode) wrap.classList.add(mode);
+  }
+
+  function getPane(key) {
+    return document.getElementById(paneByKey[key]);
+  }
+
+  function getActiveScenarioKey() {
+    var pane = tabContent.querySelector('.tab-pane.active');
+    return pane && pane.getAttribute('data-demo-scenario');
+  }
+
+  function resetPane(key) {
+    var pane = getPane(key);
+    if (!pane) return;
+    var typed = pane.querySelector('.landing-examples__typed-text');
+    var out = pane.querySelector('[data-demo-key]');
+    var loading = pane.querySelector('.landing-examples__output-loading');
+    var gen = pane.querySelector('.landing-examples__generate-btn');
+    var inputWrap = pane.querySelector('.landing-examples__input--demo');
+    var pair = pane.querySelector('.landing-examples-pair--demo');
+
+    if (typed) typed.textContent = '';
+    if (out) {
+      out.textContent = '';
+      out.setAttribute('aria-busy', 'false');
+      out.classList.remove('landing-examples__output-text--typing');
+    }
+    if (loading) {
+      loading.classList.remove('is-visible');
+      loading.setAttribute('aria-hidden', 'true');
+    }
+    if (gen) {
+      gen.disabled = true;
+      gen.classList.remove('is-demo-focus', 'is-demo-pressed');
+    }
+    if (inputWrap) inputWrap.classList.remove('is-demo-typing', 'is-demo-active');
+    if (pair) pair.classList.remove('is-demo-step-input', 'is-demo-step-generate', 'is-demo-step-loading', 'is-demo-step-output');
+    if (out) {
+      setDemoStatus(out, '');
+      setDemoOutputMode(out, '');
+    }
+  }
+
+  function closeEditIfInPane(pane) {
+    var ed = pane.querySelector('.landing-examples__output-text--editing');
+    if (ed) closeEdit(ed);
+  }
+
+  function goToTab(key, token, onDone) {
+    if (getActiveScenarioKey() === key) {
+      setTimeout(function() {
+        if (token !== demoRunId) return;
+        onDone();
+      }, 50);
+      return;
+    }
+    var btn = document.getElementById(tabBtnByKey[key]);
+    if (!btn) {
+      onDone();
+      return;
+    }
+    function doneOnce(e) {
+      if (e.target !== btn) return;
+      tabList.removeEventListener('shown.bs.tab', doneOnce);
+      setTimeout(function() {
+        if (token !== demoRunId) return;
+        onDone();
+      }, 45);
+    }
+    skipNextUserTabEvent = true;
+    tabList.addEventListener('shown.bs.tab', doneOnce);
+    bootstrap.Tab.getOrCreateInstance(btn).show();
+  }
+
+  function typeInputChars(el, text, ms, token, done) {
+    var i = 0;
+    function tick() {
+      if (token !== demoRunId) return;
+      if (i >= text.length) {
+        if (el) el.textContent = text;
+        done();
+        return;
+      }
+      if (el) el.textContent = text.slice(0, i + 1);
+      i++;
+      setTimeout(tick, ms);
+    }
+    tick();
+  }
+
+  function appendLines(outEl, lines, delayMs, token, done) {
+    var idx = 0;
+    var acc = '';
+    function next() {
+      if (token !== demoRunId) return;
+      if (idx >= lines.length) {
+        outEl.textContent = acc;
+        done();
+        return;
+      }
+      acc += (idx > 0 ? '\n' : '') + lines[idx];
+      outEl.textContent = acc;
+      idx++;
+      setTimeout(next, delayMs);
+    }
+    next();
+  }
+
+  function runScenarioSteps(key, token, onComplete) {
+    var data = scenarios[key];
+    if (!data || typeof data.input !== 'string' || typeof data.output !== 'string') {
+      if (onComplete) onComplete();
+      return;
+    }
+
+    var pane = getPane(key);
+    if (!pane) {
+      if (onComplete) onComplete();
+      return;
+    }
+
+    if (reduceMotion) {
+      resetPane(key);
+      closeEditIfInPane(pane);
+      var tin = pane.querySelector('.landing-examples__typed-text');
+      var tout = pane.querySelector('[data-demo-key]');
+      var gen = pane.querySelector('.landing-examples__generate-btn');
+      if (tin) tin.textContent = data.input;
+      if (gen) gen.disabled = false;
+      setTimeout(function() {
+        if (token !== demoRunId) return;
+        if (gen) gen.classList.add('is-demo-pressed');
+        setTimeout(function() {
+          if (token !== demoRunId) return;
+          if (gen) gen.classList.remove('is-demo-pressed');
+          if (tout) {
+            tout.textContent = data.output;
+            tout.setAttribute('aria-busy', 'false');
+            setDemoStatus(tout, statusLabels.done);
+            setDemoOutputMode(tout, 'is-complete');
+          }
+          setTimeout(function() {
+            if (token !== demoRunId) return;
+            if (onComplete) onComplete();
+          }, 850);
+        }, 200);
+      }, 350);
+      return;
+    }
+
+    resetPane(key);
+    closeEditIfInPane(pane);
+
+    var typedEl = pane.querySelector('.landing-examples__typed-text');
+    var outEl = pane.querySelector('[data-demo-key]');
+    var genBtn = pane.querySelector('.landing-examples__generate-btn');
+    var loadingEl = pane.querySelector('.landing-examples__output-loading');
+    var inputWrap = pane.querySelector('.landing-examples__input--demo');
+    var pair = pane.querySelector('.landing-examples-pair--demo');
+
+    if (!typedEl || !outEl || !genBtn || !loadingEl || !inputWrap || !pair) {
+      if (onComplete) onComplete();
+      return;
+    }
+
+    var inputMs = Math.max(24, Math.min(44, Math.floor(2600 / Math.max(1, data.input.length))));
+    inputWrap.classList.add('is-demo-active', 'is-demo-typing');
+    pair.classList.add('is-demo-step-input');
+
+    typeInputChars(typedEl, data.input, inputMs, token, function() {
+      if (token !== demoRunId) return;
+      inputWrap.classList.remove('is-demo-typing');
+      genBtn.disabled = false;
+      setTimeout(function() {
+        if (token !== demoRunId) return;
+        pair.classList.remove('is-demo-step-input');
+        pair.classList.add('is-demo-step-generate');
+        genBtn.classList.add('is-demo-focus');
+        setTimeout(function() {
+          if (token !== demoRunId) return;
+          genBtn.classList.add('is-demo-pressed');
+          setTimeout(function() {
+            if (token !== demoRunId) return;
+            genBtn.classList.remove('is-demo-pressed', 'is-demo-focus');
+            pair.classList.remove('is-demo-step-generate');
+            pair.classList.add('is-demo-step-loading');
+            loadingEl.classList.add('is-visible');
+            loadingEl.setAttribute('aria-hidden', 'false');
+            outEl.setAttribute('aria-busy', 'true');
+            setDemoStatus(outEl, statusLabels.generating);
+            setDemoOutputMode(outEl, 'is-generating');
+
+            var loadMs = 880 + Math.random() * 300;
+            setTimeout(function() {
+              if (token !== demoRunId) return;
+              loadingEl.classList.remove('is-visible');
+              loadingEl.setAttribute('aria-hidden', 'true');
+              pair.classList.remove('is-demo-step-loading');
+              pair.classList.add('is-demo-step-output');
+              setDemoOutputMode(outEl, 'is-typing');
+              outEl.classList.add('landing-examples__output-text--typing');
+
+              var lines = data.output.split('\n');
+              var lineDelay = Math.max(300, Math.min(500, Math.floor(4000 / Math.max(3, lines.length))));
+
+              appendLines(outEl, lines, lineDelay, token, function() {
+                if (token !== demoRunId) return;
+                outEl.classList.remove('landing-examples__output-text--typing');
+                outEl.setAttribute('aria-busy', 'false');
+                setDemoStatus(outEl, statusLabels.done);
+                setDemoOutputMode(outEl, 'is-complete');
+                pair.classList.remove('is-demo-step-output');
+                inputWrap.classList.remove('is-demo-active');
+                if (onComplete) onComplete();
+              });
+            }, loadMs);
+          }, 150);
+        }, 400);
+      }, 260);
+    });
+  }
+
+  function scheduleChainFromIndex(idx, token) {
+    if (demoLoopTimer) clearTimeout(demoLoopTimer);
+    demoLoopTimer = null;
+    var nextIdx = (idx + 1) % scenarioKeys.length;
+    var pause = nextIdx === 0 ? (8000 + Math.random() * 4000) : (2200 + Math.random() * 700);
+    demoLoopTimer = setTimeout(function() {
+      demoLoopTimer = null;
+      if (token !== demoRunId) return;
+      runChainFrom(nextIdx, token);
+    }, pause);
+  }
+
+  function runChainFrom(idx, token) {
+    var key = scenarioKeys[idx];
+    goToTab(key, token, function() {
+      if (token !== demoRunId) return;
+      var p = getPane(key);
+      if (!p) return;
+      var pair = p.querySelector('.landing-examples-pair--demo');
+      if (pair) {
+        pair.classList.remove('landing-examples-pair--enter');
+        void pair.offsetWidth;
+        pair.classList.add('landing-examples-pair--enter');
+      }
+      runScenarioSteps(key, token, function() {
+        if (token !== demoRunId) return;
+        scheduleChainFromIndex(idx, token);
+      });
+    });
+  }
+
+  function startAutoDemo() {
+    if (demoVisible) return;
+    demoVisible = true;
+    demoRunId++;
+    runChainFrom(0, demoRunId);
+  }
+
+  function stopAutoDemo() {
+    if (!demoVisible) return;
+    demoVisible = false;
+    if (demoLoopTimer) clearTimeout(demoLoopTimer);
+    demoLoopTimer = null;
+    demoRunId++;
+  }
+
+  tabList.addEventListener('shown.bs.tab', function(e) {
+    var btn = e.target;
+    if (!btn || !btn.classList.contains('nav-link')) return;
+    if (skipNextUserTabEvent) {
+      skipNextUserTabEvent = false;
+      return;
+    }
+    demoRunId++;
+    if (demoLoopTimer) clearTimeout(demoLoopTimer);
+    demoLoopTimer = null;
+
+    var targetSel = btn.getAttribute('data-bs-target');
+    var pane = targetSel && document.querySelector(targetSel);
+    var key = pane && pane.getAttribute('data-demo-scenario');
+    if (!key) return;
+
+    var userToken = demoRunId;
+    setTimeout(function() {
+      resetPane(key);
+      runScenarioSteps(key, userToken, function() {
+        if (userToken !== demoRunId) return;
+        scheduleChainFromIndex(scenarioKeys.indexOf(key), userToken);
+      });
+    }, 200);
+  });
+
+  if (typeof IntersectionObserver !== 'undefined') {
+    var demoObs = new IntersectionObserver(function(entries) {
+      var ent = entries[0];
+      if (!ent) return;
+      if (ent.isIntersecting) startAutoDemo();
+      else stopAutoDemo();
+    }, { threshold: 0.12, rootMargin: '0px 0px -6% 0px' });
+    demoObs.observe(section);
+  } else {
+    startAutoDemo();
+  }
+})();
+
+(function() {
+  var section = document.querySelector('.landing-how');
+  if (!section) return;
+  var copyEl = document.getElementById('landing-how-demo-copy');
+  var root = document.getElementById('landing-how-demo-root');
+  var typed = document.getElementById('landing-how-demo-typed');
+  var gen = document.getElementById('landing-how-demo-generate');
+  var loading = document.getElementById('landing-how-demo-loading');
+  var result = document.getElementById('landing-how-demo-result');
+  var status = document.getElementById('landing-how-demo-status');
+  if (!copyEl || !root || !typed || !gen || !loading || !result || !status) return;
+
+  var copy;
+  try {
+    copy = JSON.parse(copyEl.textContent.trim());
+  } catch (err) {
+    return;
+  }
+  if (!copy || typeof copy.input !== 'string' || typeof copy.output !== 'string') return;
+
+  var inputPanel = root.querySelector('.landing-how-demo__panel--input');
+  var stepsWrap = document.getElementById('landing-how-steps');
+  var steps = section.querySelectorAll('[data-how-demo-step]');
+  var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var runId = 0;
+  var visible = false;
+
+  function railScaleForStep(n) {
+    if (n <= 0) return 0;
+    if (n >= 3) return 1;
+    return n / 3;
+  }
+
+  function setStep(n) {
+    steps.forEach(function(s) {
+      var stepNum = parseInt(s.getAttribute('data-how-demo-step'), 10);
+      s.classList.toggle('landing-how-step--demo-active', stepNum === n);
+      s.classList.toggle('landing-how-step--demo-done', n > 0 && stepNum < n);
+      s.classList.toggle('landing-how-step--demo-pending', n > 0 && stepNum > n);
+    });
+    if (stepsWrap) {
+      stepsWrap.style.setProperty('--how-rail-scale', String(railScaleForStep(n)));
+    }
+    if (root) {
+      if (n > 0) root.setAttribute('data-demo-step', String(n));
+      else root.removeAttribute('data-demo-step');
+    }
+  }
+
+  function resetDemo() {
+    steps.forEach(function(s) {
+      s.classList.remove(
+        'landing-how-step--demo-active',
+        'landing-how-step--demo-done',
+        'landing-how-step--demo-pending'
+      );
+    });
+    if (stepsWrap) {
+      stepsWrap.style.setProperty('--how-rail-scale', '0');
+    }
+    if (root) root.removeAttribute('data-demo-step');
+    root.classList.remove('landing-how-demo--typing', 'is-phase-output');
+    if (inputPanel) inputPanel.classList.remove('landing-how-demo__panel--focus');
+    typed.textContent = '';
+    gen.disabled = true;
+    gen.classList.remove('is-demo-focus', 'is-demo-pressed');
+    loading.classList.remove('is-visible');
+    loading.setAttribute('aria-hidden', 'true');
+    result.textContent = '';
+    result.classList.remove('is-visible');
+    status.textContent = '';
+    status.classList.remove('is-visible');
+  }
+
+  function cycleLengthMs() {
+    return 6000 + Math.floor(Math.random() * 4000);
+  }
+
+  function typeInputChars(text, msPerChar, token, done) {
+    var i = 0;
+    function tick() {
+      if (token !== runId) return;
+      if (i >= text.length) {
+        typed.textContent = text;
+        done();
+        return;
+      }
+      typed.textContent = text.slice(0, i + 1);
+      i++;
+      setTimeout(tick, msPerChar);
+    }
+    tick();
+  }
+
+  function appendOutputLines(text, delayMs, token, done) {
+    var lines = text.split('\n');
+    var idx = 0;
+    var acc = '';
+    function next() {
+      if (token !== runId) return;
+      if (idx >= lines.length) {
+        result.textContent = acc;
+        done();
+        return;
+      }
+      acc += (idx > 0 ? '\n' : '') + lines[idx];
+      result.textContent = acc;
+      result.classList.add('is-visible');
+      idx++;
+      setTimeout(next, delayMs);
+    }
+    next();
+  }
+
+  function scheduleNextCycle(token, t0) {
+    var elapsed = Date.now() - t0;
+    var wait = Math.max(0, cycleLengthMs() - elapsed);
+    setTimeout(function() {
+      if (token !== runId || !visible) return;
+      runHowDemoCycle();
+    }, wait);
+  }
+
+  function runHowDemoCycle() {
+    var token = ++runId;
+    var t0 = Date.now();
+    resetDemo();
+
+    if (reduceMotion) {
+      setStep(1);
+      if (inputPanel) inputPanel.classList.add('landing-how-demo__panel--focus');
+      typed.textContent = copy.input;
+      gen.disabled = false;
+      setTimeout(function() {
+        if (token !== runId) return;
+        setStep(2);
+        if (inputPanel) inputPanel.classList.remove('landing-how-demo__panel--focus');
+        loading.classList.add('is-visible');
+        loading.setAttribute('aria-hidden', 'false');
+        if (copy.generating) {
+          status.textContent = copy.generating;
+          status.classList.add('is-visible');
+        }
+        setTimeout(function() {
+          if (token !== runId) return;
+          loading.classList.remove('is-visible');
+          loading.setAttribute('aria-hidden', 'true');
+          setStep(3);
+          root.classList.add('is-phase-output');
+          result.textContent = copy.output;
+          result.classList.add('is-visible');
+          if (copy.done) {
+            status.textContent = copy.done;
+            status.classList.add('is-visible');
+          }
+          scheduleNextCycle(token, t0);
+        }, 400);
+      }, 280);
+      return;
+    }
+
+    setStep(1);
+    if (inputPanel) inputPanel.classList.add('landing-how-demo__panel--focus');
+    root.classList.add('landing-how-demo--typing');
+    var inputMs = Math.max(26, Math.min(44, Math.floor(2400 / Math.max(1, copy.input.length))));
+
+    typeInputChars(copy.input, inputMs, token, function() {
+      if (token !== runId) return;
+      root.classList.remove('landing-how-demo--typing');
+      gen.disabled = false;
+      setTimeout(function() {
+        if (token !== runId) return;
+        gen.classList.add('is-demo-focus');
+        setTimeout(function() {
+          if (token !== runId) return;
+          gen.classList.add('is-demo-pressed');
+          setTimeout(function() {
+            if (token !== runId) return;
+            gen.classList.remove('is-demo-pressed', 'is-demo-focus');
+            setStep(2);
+            if (inputPanel) inputPanel.classList.remove('landing-how-demo__panel--focus');
+            loading.classList.add('is-visible');
+            loading.setAttribute('aria-hidden', 'false');
+            if (copy.generating) {
+              status.textContent = copy.generating;
+              status.classList.add('is-visible');
+            }
+            var loadMs = 960 + Math.floor(Math.random() * 380);
+            setTimeout(function() {
+              if (token !== runId) return;
+              loading.classList.remove('is-visible');
+              loading.setAttribute('aria-hidden', 'true');
+              setStep(3);
+              root.classList.add('is-phase-output');
+              if (copy.done) {
+                status.textContent = copy.done;
+                status.classList.add('is-visible');
+              }
+              var lines = copy.output.split('\n');
+              var lineDelay = Math.max(220, Math.min(420, Math.floor(1400 / Math.max(1, lines.length))));
+              appendOutputLines(copy.output, lineDelay, token, function() {
+                if (token !== runId) return;
+                scheduleNextCycle(token, t0);
+              });
+            }, loadMs);
+          }, 140);
+        }, 380);
+      }, 240);
+    });
+  }
+
+  function startHowDemo() {
+    if (visible) return;
+    visible = true;
+    if (stepsWrap) stepsWrap.classList.add('landing-how__steps--demo-live');
+    runHowDemoCycle();
+  }
+
+  function stopHowDemo() {
+    if (!visible) return;
+    visible = false;
+    runId++;
+    resetDemo();
+    if (stepsWrap) stepsWrap.classList.remove('landing-how__steps--demo-live');
+  }
+
+  if (typeof IntersectionObserver !== 'undefined') {
+    var howObs = new IntersectionObserver(function(entries) {
+      var ent = entries[0];
+      if (!ent) return;
+      if (ent.isIntersecting) startHowDemo();
+      else stopHowDemo();
+    }, { threshold: 0.15, rootMargin: '0px 0px -8% 0px' });
+    howObs.observe(section);
+  } else {
+    startHowDemo();
+  }
+})();
+
+(function() {
+  var root = document.querySelector('.landing-page');
+  if (!root) return;
+  var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var nodes = root.querySelectorAll('.landing-reveal');
+  if (!nodes.length) return;
+  if (reduceMotion) {
+    nodes.forEach(function(el) {
+      el.classList.add('is-visible');
+    });
+    return;
+  }
+  if (typeof IntersectionObserver === 'undefined') {
+    nodes.forEach(function(el) {
+      el.classList.add('is-visible');
+    });
+    return;
+  }
+  var obs = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (!entry.isIntersecting) return;
+      entry.target.classList.add('is-visible');
+      obs.unobserve(entry.target);
+    });
+  }, { rootMargin: '0px 0px -6% 0px', threshold: 0.08 });
+  nodes.forEach(function(el) {
+    obs.observe(el);
+  });
+})();
+</script>
+{% endif %}
+{% if current_user.is_authenticated and all_tools_for_search is defined %}
+<script>
+window.__noToolsFoundText = {{ _('No tools found') | tojson }};
+(function() {
+  var searchInput = document.getElementById('toolSearch');
+  var resultsEl = document.getElementById('toolSearchResults');
+  var tools = {{ all_tools_for_search | tojson | safe }};
+  if (!searchInput || !resultsEl || !tools.length) return;
+
+  function getMatches() {
+    var q = searchInput.value.trim().toLowerCase();
+    if (!q) return [];
+    return tools.filter(function(t) { return t.name.toLowerCase().indexOf(q) !== -1; });
+  }
+
+  function showResults(matches) {
+    resultsEl.innerHTML = '';
+    resultsEl.setAttribute('aria-hidden', 'false');
+    if (matches.length === 0) {
+      resultsEl.innerHTML = '<li class="list-group-item list-group-item-secondary">' + (window.__noToolsFoundText || 'No tools found') + '</li>';
+      return;
+    }
+    matches.slice(0, 8).forEach(function(t) {
+      var li = document.createElement('li');
+      li.className = 'list-group-item list-group-item-action d-flex align-items-center';
+      li.innerHTML = '<span class="me-2">' + (t.icon || '') + '</span><span>' + t.name + '</span>';
+      li.addEventListener('click', function() { window.location.href = t.url; });
+      resultsEl.appendChild(li);
+    });
+  }
+
+  function hideResults() {
+    resultsEl.innerHTML = '';
+    resultsEl.setAttribute('aria-hidden', 'true');
+  }
+
+  searchInput.addEventListener('input', function() {
+    var matches = getMatches();
+    if (matches.length === 0) { hideResults(); return; }
+    showResults(matches);
+  });
+  searchInput.addEventListener('blur', function() { setTimeout(hideResults, 200); });
+  searchInput.addEventListener('focus', function() {
+    var matches = getMatches();
+    if (matches.length > 0) showResults(matches);
+  });
+  searchInput.addEventListener('keydown', function(e) {
+    if (e.key !== 'Enter') return;
+    e.preventDefault();
+    var matches = getMatches();
+    if (matches.length > 0) window.location.href = matches[0].url;
+  });
+})();
+var hint = document.querySelector('.dashboard-sidebar-hint');
+if (hint) hint.addEventListener('click', function(e) { e.preventDefault(); });
+</script>
+{% endif %}
+{% endblock %}
+
+{% block footer_text %}{{ _('All rights reserved') }}{% endblock %}
+{% block logout_text %}{{ _('Log out') }}{% endblock %}
